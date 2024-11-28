@@ -51,7 +51,6 @@ func TestMeasurementAndSolution(t *testing.T) {
 				// If context is canceled, exit the goroutine
 				return
 			default:
-				// Simulate fetching the measurement
 				response, statusCode, err := handler.Measurement()
 				if err != nil || statusCode != 200 {
 					errorChan <- fmt.Errorf("goroutine %d failed to fetch measurement: %v", id, err)
