@@ -110,3 +110,17 @@ func TestMeasurementAndSolution(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestFetchStarsAndResonanceSolution(t *testing.T) {
+	avg, err := domain.CalculateAverageResonance(handler)
+	assert.NoError(t, err)
+	assert.NotZero(t, avg)
+
+	response, statusCode, err := handler.ResonanceSolution(avg)
+	assert.NoError(t, err)
+	assert.Equal(t, 200, statusCode)
+	log.Infof("response: %+v", response)
+
+	resultValue := response["result"]
+	assert.NotEmpty(t, resultValue)
+}
