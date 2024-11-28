@@ -16,15 +16,22 @@ func TestCalculateSpeed(t *testing.T) {
 	}{
 		{
 			name:           "valid input",
-			distanceStr:    "10.5",
-			timeStr:        "2.5",
-			expectedSpeed:  4,
+			distanceStr:    "535 AU",
+			timeStr:        "1.3209876543209877 hours",
+			expectedSpeed:  405,
+			expectedErrMsg: "",
+		},
+		{
+			name:           "valid input no suffixes",
+			distanceStr:    "535",
+			timeStr:        "1.3209876543209877",
+			expectedSpeed:  405,
 			expectedErrMsg: "",
 		},
 		{
 			name:           "empty distance",
 			distanceStr:    "",
-			timeStr:        "2.5",
+			timeStr:        "2.5 hours",
 			expectedSpeed:  0,
 			expectedErrMsg: "distance or time is empty",
 		},
