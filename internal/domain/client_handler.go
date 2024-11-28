@@ -7,4 +7,5 @@ type ClientHandler interface {
 	MeassurmentSolution(speed int) (response map[string]interface{}, statusCode int, err error)
 
 	FetchStars(page int) (response []map[string]interface{}, statusCode int, err error)
+	ResonanceSolution(averaegeResonance int) (response map[string]interface{}, statusCode int, err error)
 }
