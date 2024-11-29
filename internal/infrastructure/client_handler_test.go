@@ -106,6 +106,7 @@ func TestMeasurementAndSolution(t *testing.T) {
 
 		resultValue := response["result"]
 		assert.NotEmpty(t, resultValue)
+		assert.Equal(t, "correct", resultValue)
 	case err := <-errorChan:
 		// Handle any errors encountered in the goroutines
 		t.Fatal(err)
@@ -125,10 +126,12 @@ func TestFetchStarsAndResonanceSolution(t *testing.T) {
 
 	resultValue := response["result"]
 	assert.NotEmpty(t, resultValue)
+	assert.Equal(t, "correct", resultValue)
 }
 
 // E3: La Búsqueda del Templo Sith Perdido
 func TestBalancedPlanetSolution(t *testing.T) {
+	// Actual test logic goes here:
 	planets, err := domain.AllPlanets(handler)
 	assert.NoError(t, err)
 	assert.NotEmpty(t, planets)
@@ -148,6 +151,26 @@ func TestBalancedPlanetSolution(t *testing.T) {
 
 			resultValue := response["result"]
 			assert.NotEmpty(t, resultValue)
+			assert.Equal(t, "correct", resultValue)
+			log.Infof(strings.Repeat("-", 75))
+			log.Infof(strings.Repeat("-", 75))
+			// "Balanced Planet: Ryloth"
+			log.Infof("Balanced Planet: %s", planet.Name)
+			log.Infof(strings.Repeat("-", 75))
 		}
 	}
+}
+
+// E4: La Búsqueda de la Forja Élfica Olvidada
+func TestUserAndPasswordSolution(t *testing.T) {
+	//<span style="color:white; float: right;">Not all those who wander</span>
+	//<input type="password" value="are lost" readonly="">
+	response, statusCode, err := handler.UserAndPasswordSolution("Not all those who wander", "are lost")
+	assert.NoError(t, err)
+	assert.Equal(t, 200, statusCode)
+	log.Infof("response: %+v", response)
+
+	resultValue := response["result"]
+	assert.NotEmpty(t, resultValue)
+	assert.Equal(t, "correct", resultValue)
 }

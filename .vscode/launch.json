@@ -18,7 +18,8 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}",
-            "console": "integratedTerminal"  // Use integratedTerminal for user input of fmt.Scan
+            "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
+            "args": ["-timeout", "3m"]
         }
     ],
     "compounds": [

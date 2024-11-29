@@ -101,7 +101,7 @@ func CalculateIBF(handler ClientHandler, planet Planet) (float64, error) {
 				log.Printf("Error querying oracle: missing oracle_notes")
 				return
 			}
-			log.Infof("Oracle notes for %s: %s", name, oracleNotes)
+			//log.Infof("Oracle notes for %s: %s", name, oracleNotes)
 
 			decoded, err := base64.StdEncoding.DecodeString(oracleNotes.(string))
 			if err != nil {
