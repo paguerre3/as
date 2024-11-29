@@ -15,6 +15,11 @@ type ClientHandler interface {
 
 	FetchStars(page int) (response []map[string]interface{}, statusCode int, err error)
 	ResonanceSolution(averaegeResonance int) (response map[string]interface{}, statusCode int, err error)
+
+	Fetch(uri string) (response map[string]interface{}, statusCode int, err error)
+	FetchSWAPIPlanets(index int) (response map[string]interface{}, statusCode int, err error)
+	QueryOracle(name string) (response map[string]interface{}, statusCode int, err error)
+	OracleSolution(balancedBlanet string) (response map[string]interface{}, statusCode int, err error)
 }
 
 type clientHandlerImpl struct {
@@ -35,7 +40,7 @@ func (c *clientHandlerImpl) Register(alias, country, email, applyRole string) (m
 		"apply_role": applyRole, // engineering
 	}
 
-	uri := buildApiUri(1, "register")
+	uri := buildASApiUri(1, "register")
 
 	// Send the POST request
 	resp, err := c.client.R().
@@ -50,7 +55,7 @@ func (c *clientHandlerImpl) Register(alias, country, email, applyRole string) (m
 }
 
 func (c *clientHandlerImpl) Measurement() (map[string]interface{}, int, error) {
-	uri := buildApiUri(1, "s1/e1/resources/measurement")
+	uri := buildASApiUri(1, "s1/e1/resources/measurement")
 
 	// Send the GET request
 	resp, err := c.client.R().
@@ -68,7 +73,7 @@ func (c *clientHandlerImpl) MeassurmentSolution(speed int) (map[string]interface
 		"speed": speed,
 	}
 
-	uri := buildApiUri(1, "s1/e1/solution")
+	uri := buildASApiUri(1, "s1/e1/solution")
 
 	// Send the POST request
 	resp, err := c.client.R().
@@ -84,7 +89,7 @@ func (c *clientHandlerImpl) MeassurmentSolution(speed int) (map[string]interface
 }
 
 func (c *clientHandlerImpl) FetchStars(page int) ([]map[string]interface{}, int, error) {
-	uri := buildApiUri(1, "s1/e2/resources/stars")
+	uri := buildASApiUri(1, "s1/e2/resources/stars")
 
 	// Send the GET request
 	resp, err := c.client.R().
@@ -103,7 +108,7 @@ func (c *clientHandlerImpl) ResonanceSolution(averageResonance int) (map[string]
 		"average_resonance": averageResonance,
 	}
 
-	uri := buildApiUri(1, "s1/e2/solution")
+	uri := buildASApiUri(1, "s1/e2/solution")
 
 	// Send the POST request
 	resp, err := c.client.R().
@@ -115,6 +120,61 @@ func (c *clientHandlerImpl) ResonanceSolution(averageResonance int) (map[string]
 		return handleError(resp, err)
 	}
 
+	return handleResponse(resp)
+}
+
+func (c *clientHandlerImpl) Fetch(uri string) (map[string]interface{}, int, error) {
+	// Send the GET request
+	resp, err := c.client.R().
+		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		Get(uri)
+	if err != nil {
+		return handleError(resp, err)
+	}
+	return handleResponse(resp)
+}
+
+func (c *clientHandlerImpl) fetchSWAPI(path string, index int) (map[string]interface{}, int, error) {
+	uri := builSWAPIPeopleUri(path, index)
+	return c.Fetch(uri)
+}
+
+func (c *clientHandlerImpl) FetchSWAPIPlanets(index int) (map[string]interface{}, int, error) {
+	return c.fetchSWAPI("planets", index)
+}
+
+func (c *clientHandlerImpl) QueryOracle(name string) (map[string]interface{}, int, error) {
+	uri := buildASApiUri(1, "s1/e3/resources/oracle-rolodex")
+
+	// Send the GET request
+	resp, err := c.client.R().
+		SetHeader(AUTHORIZATION, BEARER_API_KEY).
+		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetQueryParam("name", name).
+		Get(uri)
+	if err != nil {
+		return handleError(resp, err)
+	}
+
+	return handleResponse(resp)
+}
+
+func (c *clientHandlerImpl) OracleSolution(balancedBlanet string) (map[string]interface{}, int, error) {
+	requestBody := map[string]string{
+		"planet": balancedBlanet,
+	}
+
+	uri := buildASApiUri(1, "s1/e3/solution")
+
+	// Send the POST request
+	resp, err := c.client.R().
+		SetHeader(AUTHORIZATION, BEARER_API_KEY).
+		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetBody(requestBody).
+		Post(uri)
+	if err != nil {
+		return handleError(resp, err)
+	}
 	return handleResponse(resp)
 }
 

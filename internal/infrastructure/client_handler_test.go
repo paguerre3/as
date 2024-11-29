@@ -28,6 +28,7 @@ func TestRegister(t *testing.T) {
 	*/
 }
 
+// E1: La Sonda Silenciosa
 func TestMeasurementAndSolution(t *testing.T) {
 	// Create a cancelable context to handle goroutine cancellation
 	ctx, cancel := context.WithCancel(context.Background())
@@ -111,6 +112,7 @@ func TestMeasurementAndSolution(t *testing.T) {
 	}
 }
 
+// E2: El Enigma Cósmico de Kepler-452b
 func TestFetchStarsAndResonanceSolution(t *testing.T) {
 	avg, err := domain.CalculateAverageResonance(handler)
 	assert.NoError(t, err)
@@ -123,4 +125,29 @@ func TestFetchStarsAndResonanceSolution(t *testing.T) {
 
 	resultValue := response["result"]
 	assert.NotEmpty(t, resultValue)
+}
+
+// E3: La Búsqueda del Templo Sith Perdido
+func TestBalancedPlanetSolution(t *testing.T) {
+	planets, err := domain.AllPlanets(handler)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, planets)
+
+	for _, planet := range planets {
+		ibf, err := domain.CalculateIBF(handler, planet)
+		if err != nil {
+			// only possible error is "no residents found" whihc produces 0 IBF
+			log.Warnf("Error calculating IBF for planet %s: %v", planet.Name, err)
+		}
+		if ibf == 0 && err == nil {
+			// only one panet with people and balanced (IBF = 0)
+			response, statusCode, err := handler.OracleSolution(planet.Name)
+			assert.NoError(t, err)
+			assert.Equal(t, 200, statusCode)
+			log.Infof("response: %+v", response)
+
+			resultValue := response["result"]
+			assert.NotEmpty(t, resultValue)
+		}
+	}
 }
