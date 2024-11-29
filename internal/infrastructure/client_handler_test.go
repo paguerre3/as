@@ -17,14 +17,14 @@ var (
 )
 
 func TestRegister(t *testing.T) {
-	response, statusCode, err := handler.Register("CamiAguerre", "ARG", "pablo.aguerre@gmail.com", "engineering")
+	response, statusCode, err := handler.Register("DarioAguerre", "ARG", "aguerrepablodario@gmail.com", "engineering")
 	assert.NoError(t, err)
 	assert.Equal(t, 200, statusCode)
 	log.Infof("response: %+v", response) // message says API key is sent via e-mail
 
 	/** e-mail received:
 	Esta es tu API-KEY para la AltScore Contest
-	a79f99a48ee04b529605b797fe43182c
+	255292ff68394c6eb6136069a034bf28
 	*/
 }
 
@@ -99,7 +99,7 @@ func TestMeasurementAndSolution(t *testing.T) {
 		assert.NoError(t, err)
 
 		// Fetch solution after speed calculation
-		response, statusCode, err := handler.MeassurmentSolution(speed)
+		response, statusCode, err := handler.MeassurmentSolution(speed) // 405
 		assert.NoError(t, err)
 		assert.Equal(t, 200, statusCode)
 		log.Infof("response: %+v", response)
@@ -119,7 +119,7 @@ func TestFetchStarsAndResonanceSolution(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotZero(t, avg)
 
-	response, statusCode, err := handler.ResonanceSolution(avg)
+	response, statusCode, err := handler.ResonanceSolution(avg) // 388
 	assert.NoError(t, err)
 	assert.Equal(t, 200, statusCode)
 	log.Infof("response: %+v", response)
@@ -173,4 +173,12 @@ func TestUserAndPasswordSolution(t *testing.T) {
 	resultValue := response["result"]
 	assert.NotEmpty(t, resultValue)
 	assert.Equal(t, "correct", resultValue)
+}
+
+// E5: La Última Defensa de la "Valiant" - ¡Cuenta Regresiva!
+func TestLastDefenseSolution(t *testing.T) {
+	result, error := domain.LastDefense(handler)
+	assert.NoError(t, error)
+	assert.NotEmpty(t, result)
+	fmt.Printf("result: %s\n", result)
 }

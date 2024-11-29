@@ -22,6 +22,9 @@ type ClientHandler interface {
 	OracleSolution(balancedBlanet string) (response map[string]interface{}, statusCode int, err error)
 
 	UserAndPasswordSolution(username, password string) (response map[string]interface{}, statusCode int, err error)
+
+	StartBattle() (response string, statusCode int, err error)
+	PerformTurn(action string, x string, y int) (response map[string]interface{}, statusCode int, err error)
 }
 
 type clientHandlerImpl struct {
@@ -199,6 +202,37 @@ func (c *clientHandlerImpl) UserAndPasswordSolution(username, password string) (
 	return handleResponse(resp)
 }
 
+func (c *clientHandlerImpl) StartBattle() (string, int, error) {
+	uri := buildASApiUri(1, "s1/e5/actions/start")
+	resp, err := c.client.R().
+		SetHeader(AUTHORIZATION, BEARER_API_KEY).
+		Post(uri)
+	if err != nil {
+		return handleStringError(resp, err)
+	}
+	return handleStringResponse(resp)
+}
+
+func (c *clientHandlerImpl) PerformTurn(action string, x string, y int) (map[string]interface{}, int, error) {
+	requestBody := map[string]interface{}{
+		"action": action,
+		"attack_position": map[string]interface{}{
+			"x": x,
+			"y": y,
+		},
+	}
+	uri := buildASApiUri(1, "s1/e5/actions/perform-turn")
+	resp, err := c.client.R().
+		SetHeader(AUTHORIZATION, BEARER_API_KEY).
+		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetBody(requestBody).
+		Post(uri)
+	if err != nil {
+		return handleError(resp, err)
+	}
+	return handleResponse(resp)
+}
+
 func handleResponse(resp *resty.Response) (map[string]interface{}, int, error) {
 	var response map[string]interface{}
 	if err := json.Unmarshal(resp.Body(), &response); err != nil {
@@ -215,6 +249,14 @@ func handleArrayResponse(resp *resty.Response) ([]map[string]interface{}, int, e
 	return response, resp.StatusCode(), nil
 }
 
+func handleStringResponse(resp *resty.Response) (response string, statusCode int, err error) {
+	statusCode = resp.StatusCode()
+	if err = json.Unmarshal(resp.Body(), &response); err != nil {
+		return "", statusCode, err
+	}
+	return response, statusCode, nil
+}
+
 func handleError(resp *resty.Response, err error) (map[string]interface{}, int, error) {
 	var statusCode int
 	if resp != nil {
@@ -229,4 +271,12 @@ func handleArrayError(resp *resty.Response, err error) ([]map[string]interface{}
 		statusCode = resp.StatusCode()
 	}
 	return nil, statusCode, err
+}
+
+func handleStringError(resp *resty.Response, err error) (string, int, error) {
+	var statusCode int
+	if resp != nil {
+		statusCode = resp.StatusCode()
+	}
+	return "", statusCode, err
 }

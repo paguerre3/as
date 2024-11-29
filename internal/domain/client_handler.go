@@ -13,4 +13,9 @@ type ClientHandler interface {
 	FetchSWAPIPlanets(index int) (response map[string]interface{}, statusCode int, err error)
 	QueryOracle(name string) (response map[string]interface{}, statusCode int, err error)
 	OracleSolution(balancedBlanet string) (response map[string]interface{}, statusCode int, err error)
+
+	UserAndPasswordSolution(username, password string) (response map[string]interface{}, statusCode int, err error)
+
+	StartBattle() (response string, statusCode int, err error)
+	PerformTurn(action string, x string, y int) (response map[string]interface{}, statusCode int, err error)
 }
