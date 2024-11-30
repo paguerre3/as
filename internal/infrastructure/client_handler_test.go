@@ -182,3 +182,18 @@ func TestLastDefenseSolution(t *testing.T) {
 	assert.NotEmpty(t, result)
 	fmt.Printf("result: %s\n", result)
 }
+
+// E6: La Infiltración en Ciudad Prisma: Un Desafío para los Maestros de Datos (Pokemons)
+func TestPokemonsHeightAvgSolution(t *testing.T) {
+	solution, error := domain.CalculatePokemonTypesAverageHeights(handler)
+	assert.NoError(t, error)
+	assert.NotEmpty(t, solution)
+	fmt.Printf("solution: %s\n", solution)
+	response, statusCode, err := handler.PokemonSolution(solution)
+	assert.NoError(t, err)
+	assert.Equal(t, 200, statusCode)
+	log.Infof("response: %+v", response)
+	resultValue := response["result"]
+	assert.NotEmpty(t, resultValue)
+	assert.Equal(t, "correct", resultValue)
+}

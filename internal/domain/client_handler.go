@@ -1,5 +1,7 @@
 package domain
 
+import "sync"
+
 type ClientHandler interface {
 	Register(alias, country, email, applyRole string) (response map[string]interface{}, statusCode int, err error)
 
@@ -18,4 +20,9 @@ type ClientHandler interface {
 
 	StartBattle() (response string, statusCode int, err error)
 	PerformTurn(action string, x string, y int) (response map[string]interface{}, statusCode int, err error)
+
+	GetPockemonTypes() (response map[string]interface{}, statusCode int, err error)
+	GetTypeData(typeUrl, typeName string) (response map[string]interface{}, statusCode int, err error)
+	GetUpdatePokemonHeight(pokemonUrl, typeName string, typeHeights map[string][]float64, mu *sync.Mutex) (statusCode int, err error)
+	PokemonSolution(pokeSolution map[string]interface{}) (response map[string]interface{}, statusCode int, err error)
 }
