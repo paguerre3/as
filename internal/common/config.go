@@ -15,6 +15,7 @@ const (
 	BEARER_API_KEY = "255292ff68394c6eb6136069a034bf28" // gmail2
 	SWAPI          = "https://swapi.dev/api/"
 	POKE_API       = "https://pokeapi.co/api/v2"
+	TEMPLATES_DIR  = "internal/infrastructure/templates"
 )
 
 func BuildASApiUri(version int, path string) string {
