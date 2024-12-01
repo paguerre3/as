@@ -19,14 +19,6 @@ func registerWalletHandlers(e *echo.Echo, serverPort string) {
 		AllowMethods: []string{echo.GET, echo.POST},
 	}))
 
-	// Skip ngrok browser warning
-	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
-		return func(c echo.Context) error {
-			c.Response().Header().Set("ngrok-skip-browser-warning", "true")
-			return next(c)
-		}
-	})
-
 	// handlers
 	uc := application.NewDamagedSpaceshipUseCases()
 	api := api.NewDamagedSpaceshipHandler(uc)
