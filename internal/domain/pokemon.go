@@ -2,27 +2,16 @@ package domain
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"sync"
 
 	"github.com/labstack/gommon/log"
 )
 
-type TypeResponse struct {
-	Results []TypeInfo `json:"results"`
-}
-
-type TypeInfo struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
-}
-
-type Pokemon struct {
-	Height int `json:"height"`
-}
-
-type Solution struct {
-	Heights map[string]float64 `json:"heights"`
+type OrderedHeight struct {
+	TypeName string
+	Height   float64
 }
 
 func calculateAverageHeights(typeHeights map[string][]float64) map[string]float64 {
@@ -125,18 +114,18 @@ func CalculatePokemonTypesAverageHeights(handler ClientHandler) (map[string]inte
 	wg.Wait()
 
 	averageHeights := calculateAverageHeights(typeHeights)
-	sortedTypeNames := make([]string, 0, len(averageHeights))
-	for typeName := range averageHeights {
-		sortedTypeNames = append(sortedTypeNames, typeName)
-	}
-	sort.Strings(sortedTypeNames)
 
-	heights := make(map[string]float64)
-	for _, typeName := range sortedTypeNames {
-		heights[typeName] = averageHeights[typeName]
+	keys := make([]string, 0, len(averageHeights))
+	for key := range averageHeights {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+	orderedMap := make(map[string]float64)
+	for _, key := range keys {
+		orderedMap[key] = math.Round(averageHeights[key]*1000) / 1000
 	}
 	solution := map[string]interface{}{
-		"heights": heights,
+		"heights": orderedMap,
 	}
 	return solution, nil
 }

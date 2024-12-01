@@ -264,7 +264,7 @@ func (c *clientHandlerImpl) GetUpdatePokemonHeight(pokemonUrl, typeName string, 
 	resp, err := c.client.R().
 		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
 		Get(pokemonUrl)
-	if resp == nil {
+	if resp != nil {
 		statusCode = resp.StatusCode()
 	}
 	if err != nil {
