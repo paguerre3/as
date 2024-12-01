@@ -1,57 +1,54 @@
-### Step-by-Step Guide to Expose API Using **ngrok**:
+To publish your Docker image to Docker Hub, follow these steps:
 
-1. **Install ngrok**  
-   Download and install ngrok from [https://ngrok.com/download](https://ngrok.com/download).  
-   - On Linux/Mac:  
-     ```sh
-     sudo apt install ngrok
-     ```  
-     **OR**
-     ```sh
-     sudo snap install ngrok
+### 1. **Login to Docker Hub from Your Terminal**
+You need to log in to Docker Hub through the command line interface (CLI). Use the following command to log in:
 
-     ngrok config add-authtoken YOUR_AUTH_TOKEN
-     ```
-   - On Windows:  
-     Download the `.exe` file and add it to your PATH.
+```bash
+docker login
+```
 
-2. **Start Your Go API Locally**  
-   Run your Go API on a specific port, e.g., `localhost:8080`:  
-   ```sh
-   go run main.go
-   ```
+You’ll be prompted to enter your Docker Hub username and password.
 
-3. **Expose Your API Using ngrok**  
-   Start ngrok with the same port:  
-   ```sh
-   ngrok http 8080
-   ```
+### 2. **Tag Your Docker Image IF NOT "already done" in Docker Compose**
+Before you can push an image to Docker Hub, you need to tag it with your Docker Hub username and repository name. The tag follows the format:
 
-4. **Get Public URL**  
-   After running the command, ngrok will display a public URL, like:  
-   ```
-   Forwarding   https://random-subdomain.ngrok.io -> http://localhost:8080
-   ```
+```
+<your-docker-username>/<repository-name>:<tag>
+```
 
-5. **Access Your API Publicly**  
-   Use the `https://random-subdomain.ngrok.io` URL in a browser, Postman, or other clients to access your local API.
+For example, if your Docker Hub username is `pablo` and you want to name your repository `my-go-app`, tag the image like this:
+
+```bash
+docker tag my-go-app pablo/my-go-app:latest
+```
+
+If you don’t specify a tag, Docker will automatically assume `latest` as the default tag.
+
+### 3. **Push the Docker Image to Docker Hub**
+Now, you can push the tagged image to Docker Hub using the `docker push` command:
+
+```bash
+docker push pablo/my-go-app:latest
+```
+
+This will upload your Docker image to Docker Hub. The upload process may take some time, depending on the size of your image and your internet connection.
+
+### 4. **Verify the Image on Docker Hub**
+Once the push is complete, go to your Docker Hub account, and you should see the image in your repositories list under the name `my-go-app`.
+
+### 5. **Pull the Docker Image (to verify)**
+To verify the image has been successfully pushed, you can pull the image from Docker Hub on any machine using the following command:
+
+```bash
+docker pull pablo/my-go-app:latest
+```
+
+This will pull the image to your local machine, confirming it's available on Docker Hub.
+
+### Additional Notes:
+- **Repository Visibility**: Make sure your Docker Hub repository is set to **Public** if you want others to access it. By default, repositories are private for new users.
+- **Pushing Large Images**: If your image is large, Docker will use layers to upload the image in parts. This is normal.
+
+
 
 ---
-
-### Advantages of ngrok:  
-- **Simple Setup**: No SSH setup required.  
-- **Custom Subdomains** (with paid plan): You can set a memorable domain like `https://myapi.ngrok.io`.  
-- **HTTPS Support**: Secure requests via HTTPS.  
-
-### Important Notes:  
-- Keep the terminal open for ngrok to work.  
-- Free accounts have session time limits (e.g., 8 hours).
-
-To stop **ngrok**, simply:
-
-1. **Press `Ctrl+C`** in the terminal where ngrok is running.
-2. Alternatively, use this command to kill any ngrok processes:  
-   ```sh
-   pkill ngrok
-   ```  
-   *(For Windows, you can stop it from the Task Manager or use `taskkill /IM ngrok.exe /F` in Command Prompt.)*
