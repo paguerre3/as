@@ -1,0 +1,9 @@
+services:
+
+  damaged_spaceship:
+    restart: "on-failure:5"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080

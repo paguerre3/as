@@ -1,11 +1,12 @@
 package web
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 	"sync"
+
+	"github.com/labstack/gommon/log"
 )
 
 const (
@@ -31,11 +32,15 @@ func NewPathResolver() func(string) string {
 			if index == -1 {
 				index = strings.Index(wdir, internalDir)
 				if index == -1 {
-					err = fmt.Errorf("cannot find %s or %s in %s", cmdDir, internalDir, wdir)
-					panic(err)
+					log.Warnf("cannot find %s or %s in %s using dafault wdir as root directory", cmdDir, internalDir, wdir)
 				}
 			}
-			rootDir := wdir[:index]
+			var rootDir string
+			if index != -1 {
+				rootDir = wdir[:index]
+			} else {
+				rootDir = wdir
+			}
 			path = filepath.Join(rootDir, pathOfDomain)
 		})
 		return path
