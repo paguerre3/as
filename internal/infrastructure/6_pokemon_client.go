@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"sync"
+
+	comm "github.com/paguerre3/as/internal/common"
 )
 
 func (c *clientHandlerImpl) GetPockemonTypes() (map[string]interface{}, int, error) {
-	uri := buildPockeApi("type")
+	uri := comm.BuildPockeApi("type")
 	resp, err := c.client.R().
-		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetHeader(comm.CONTENT_TYPE, comm.APPLICATION_JSON).
 		Get(uri)
 	if err != nil {
 		return handleError(resp, err)
@@ -19,7 +21,7 @@ func (c *clientHandlerImpl) GetPockemonTypes() (map[string]interface{}, int, err
 
 func (c *clientHandlerImpl) GetTypeData(typeUrl, typeName string) (map[string]interface{}, int, error) {
 	resp, err := c.client.R().
-		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetHeader(comm.CONTENT_TYPE, comm.APPLICATION_JSON).
 		Get(typeUrl)
 	if err != nil {
 		return handleError(resp, err)
@@ -29,7 +31,7 @@ func (c *clientHandlerImpl) GetTypeData(typeUrl, typeName string) (map[string]in
 
 func (c *clientHandlerImpl) GetUpdatePokemonHeight(pokemonUrl, typeName string, typeHeights map[string][]float64, mu *sync.Mutex) (statusCode int, err error) {
 	resp, err := c.client.R().
-		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetHeader(comm.CONTENT_TYPE, comm.APPLICATION_JSON).
 		Get(pokemonUrl)
 	if resp != nil {
 		statusCode = resp.StatusCode()
@@ -52,10 +54,10 @@ func (c *clientHandlerImpl) GetUpdatePokemonHeight(pokemonUrl, typeName string, 
 }
 
 func (c *clientHandlerImpl) PokemonSolution(pokeSolution map[string]interface{}) (map[string]interface{}, int, error) {
-	uri := buildASApiUri(1, "s1/e6/solution")
+	uri := comm.BuildASApiUri(1, "s1/e6/solution")
 	resp, err := c.client.R().
-		SetHeader(AUTHORIZATION, BEARER_API_KEY).
-		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetHeader(comm.AUTHORIZATION, comm.BEARER_API_KEY).
+		SetHeader(comm.CONTENT_TYPE, comm.APPLICATION_JSON).
 		SetBody(pokeSolution).
 		Post(uri)
 	if err != nil {

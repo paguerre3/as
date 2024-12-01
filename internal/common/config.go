@@ -1,4 +1,4 @@
-package infrastructure
+package common
 
 import (
 	"fmt"
@@ -17,14 +17,14 @@ const (
 	POKE_API       = "https://pokeapi.co/api/v2"
 )
 
-func buildASApiUri(version int, path string) string {
+func BuildASApiUri(version int, path string) string {
 	return fmt.Sprintf("%s/v%d/%s", AS_DOMAIN, version, path)
 }
 
-func builSWAPIPeopleUri(path string, index int) string {
+func BuilSWAPIPeopleUri(path string, index int) string {
 	return fmt.Sprintf("%s/%s/%d", SWAPI, path, index)
 }
 
-func buildPockeApi(path string) string {
+func BuildPockeApi(path string) string {
 	return fmt.Sprintf("%s/%s", POKE_API, path)
 }

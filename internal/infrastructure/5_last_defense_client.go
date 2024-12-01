@@ -1,9 +1,11 @@
 package infrastructure
 
+import comm "github.com/paguerre3/as/internal/common"
+
 func (c *clientHandlerImpl) StartBattle() (string, int, error) {
-	uri := buildASApiUri(1, "s1/e5/actions/start")
+	uri := comm.BuildASApiUri(1, "s1/e5/actions/start")
 	resp, err := c.client.R().
-		SetHeader(AUTHORIZATION, BEARER_API_KEY).
+		SetHeader(comm.AUTHORIZATION, comm.BEARER_API_KEY).
 		Post(uri)
 	if err != nil {
 		return handleStringError(resp, err)
@@ -19,10 +21,10 @@ func (c *clientHandlerImpl) PerformTurn(action string, x string, y int) (map[str
 			"y": y,
 		},
 	}
-	uri := buildASApiUri(1, "s1/e5/actions/perform-turn")
+	uri := comm.BuildASApiUri(1, "s1/e5/actions/perform-turn")
 	resp, err := c.client.R().
-		SetHeader(AUTHORIZATION, BEARER_API_KEY).
-		SetHeader(CONTENT_TYPE, APPLICATION_JSON).
+		SetHeader(comm.AUTHORIZATION, comm.BEARER_API_KEY).
+		SetHeader(comm.CONTENT_TYPE, comm.APPLICATION_JSON).
 		SetBody(requestBody).
 		Post(uri)
 	if err != nil {

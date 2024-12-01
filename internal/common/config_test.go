@@ -1,4 +1,4 @@
-package infrastructure
+package common
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ func TestBuildApiUri(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("version=%d,path=%s", tt.version, tt.path), func(t *testing.T) {
-			got := buildASApiUri(tt.version, tt.path)
+			got := BuildASApiUri(tt.version, tt.path)
 			assert.Equal(tt.want, got, "buildApiUri(%d, %s) = %v, want %v", tt.version, tt.path, got, tt.want)
 		})
 	}
