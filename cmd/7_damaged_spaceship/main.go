@@ -29,5 +29,5 @@ func registerWalletHandlers(e *echo.Echo, serverPort string) {
 }
 
 func main() {
-	web.NewServerNode("Damaged-Spaceship", ":8088", registerWalletHandlers).InitAndRun()
+	web.NewServerNode("Damaged-Spaceship", "0.0.0.0:8080", registerWalletHandlers).InitAndRun()
 }
