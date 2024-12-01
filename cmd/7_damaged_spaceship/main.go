@@ -10,6 +10,7 @@ import (
 )
 
 func registerWalletHandlers(e *echo.Echo, serverPort string) {
+
 	e.Renderer = web.NewTemplateRenderer(common.TEMPLATES_DIR)
 
 	// Enable CORS
@@ -17,6 +18,14 @@ func registerWalletHandlers(e *echo.Echo, serverPort string) {
 		AllowOrigins: []string{"*"}, // allow all origins
 		AllowMethods: []string{echo.GET, echo.POST},
 	}))
+
+	// Skip ngrok browser warning
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Response().Header().Set("ngrok-skip-browser-warning", "true")
+			return next(c)
+		}
+	})
 
 	// handlers
 	uc := application.NewDamagedSpaceshipUseCases()
