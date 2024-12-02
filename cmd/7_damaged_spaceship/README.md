@@ -52,3 +52,34 @@ This will pull the image to your local machine, confirming it's available on Doc
 
 
 ---
+
+### 1. **GitHub Codespaces (Free for Personal Use)**
+- **Steps**:
+  1. Push your Docker project to a GitHub repository.
+  2. Use GitHub Codespaces to run and expose your container.
+  3. Run:
+     ```bash
+     docker pull <your-dockerhub-username>/<image-name>
+     docker run -d -p 8080:8080 <your-image-name>
+     ```
+     **OR build image form liked repository in GitHub Codespaces.**
+     ```bash
+     docker-compose -f docker-compose.yml up -d
+     ```
+  4. **Expose the Port Publicly**
+    Expose the Port:
+
+    In the top bar of your Codespaces IDE, click Ports.
+    You’ll see a list of exposed ports. If the port (e.g., 8080) isn’t listed, click Add Port and enter the exposed port.
+    Make the Port Public:
+
+    Click the gear icon next to your port and select Port Visibility > Public.
+    Get the Public URL:
+
+    After making the port public, Codespaces will provide you with a public URL that you can use to access your service.
+
+- **Limitations**: Limited hours per month on the free tier.
+
+
+
+---
