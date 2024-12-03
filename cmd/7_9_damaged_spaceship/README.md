@@ -83,32 +83,62 @@ This will pull the image to your local machine, confirming it's available on Doc
 
 
 ---
-From the diagram, **the saturated liquid line and saturated vapor line indicate nonlinear relationships between pressure (P) and specific volume (v)**.
+# Case: Damaged Spaceship 2
 
-**Observations:**
+Trama:
 
-1. **Critical Point:**
-  -  Pressure (Pc) = 10 MPa, Specific Volume (vc) = 0.0035 m³/kg.
+Un suspiro de alivio escapa de tus labios al ver al robot reparador acoplarse a tu nave. La esperanza se renueva, pero dura poco. Una alarma estridente te saca de tu momentánea tranquilidad. El robot ha detectado una avería crítica: datos corruptos relacionados con la curva de "saturación y cambio de fase P-v" del fluido hidráulico. Sin esta información, la nave no puede calibrar sus actuadores y sigue a la deriva.
 
-2. **Saturated Liquid Line:**
-  - At low pressures (e.g., 0.05 MPa), the specific volume approaches **0.001 m³/kg.**
-  - Approximates a **curve that increases toward the critical point.**
+Una oleada de frustración te invade. ¡Tú eres un programador, no un ingeniero mecánico! Pero la desesperación da paso a la determinación. Siempre has sido bueno resolviendo problemas, y este no será la excepción.
 
-3. **Saturated Vapor Line:**
-  - At low pressures (e.g., 0.05 MPa), the specific volume approaches **~0.03 m³/kg.**
-  - Approximates a **curve that decreases toward the critical point.**
+La documentación del robot te da una pista: realizará 10 peticiones HTTP a la ruta /phase-change-diagram para intentar reconstruir el archivo corrupto. Ahí está tu oportunidad.
 
----
-From the diagram, the **saturated liquid line** and **saturated vapor line** indicate nonlinear relationships between **pressure (P)** and **specific volume (v)**. I'll derive **realistic equations** based on the following assumptions derived from the diagram:
+Pista:
 
----
+Mientras buscas frenéticamente entre los manuales de la nave, encuentras el cuaderno de bitácora del ingeniero mecánico. La última entrada termina abruptamente con un "¡Wubba Lubba Dub-Dub!" garabateado y una mancha de lo que sospechas es salsa Sichuan...¡Pero entre diagramas a medio terminar y ecuaciones a medio resolver, encuentras la curva de saturación del fluido hidráulico!
 
-### Observations:
-1. **Critical Point**:
-   - Pressure (Pc) = 10 MPa, Specific Volume (vc) = 0.0035 m³/kg.
-2. **Saturated Liquid Line**:
-   - At low pressures (e.g., 0.05 MPa), the specific volume approaches **0.001 m³/kg**.
-   - Approximates a curve that increases toward the critical point.
-3. **Saturated Vapor Line**:
-   - At low pressures (e.g., 0.05 MPa), the specific volume approaches **~0.03 m³/kg**.
-   - Approximates a curve that decreases toward the critical point.
+PV diagram-----------------------------------------------------------------------[start diagram]
+
+   P[MPa]    .                    .
+     |       .                    .
+     |       .          X=critical_point=pressure_const:PC=10MPa, temperature_const:Tc=500°C, volume_const:vc= 0.0035 m^3/kg 
+     |       .         / \        .
+     |       saturated/   \       .
+     |   liquid line=/     \      .
+     |       .      /       \     .
+     |       .     /         \    .
+     |       .    /           \   .
+     |       .   /    saturated\  .
+     |       . vapor (gas) line=\ .
+     |       . /                 \.
+0.05 |...……………/…………………………………………………\……………….......... T1const = 30°C (from 0.00105°C to 30°C (volume:V[m^3/kg]) at 0.05 pressure(P[MPa]))
+     |       .                    .
+     |       .                    .
+     --------------------------------------------V [m^3/kg]
+             .                    .
+          0.00105               30.00 (30°C)
+
+     "Repair robot will probe only T (temperature) > 30°C"   ¡Wubba Lubba Dub-Dub!
+
+  Empirical constant for saturated vapor line is 30°C (from 0.00105°C to 30°C (volume:V[m^3/kg]) at 0.05 pressure(P[MPa])) and saturated liquid line starts at 0.00105°C while saturated vapor line starts at 30.00 30°C when both crosses at 0.05 pressure(P[MPa])).
+  Then this is where they both saturated lines meet togheter critical_point=pressure_const:PC=10MPa, temperature_const:Tc=500°C, volume_const:vc= 0.0035 m^3/kg. 
+
+---------------------------------------------------------------------------------[end diagram]
+
+
+Ejemplo de una llamada del robot:
+
+Ruta: [GET] /phase-change-diagram?pressure=10
+
+Parámetros:
+
+pressure: 10 (en mega pascales)
+
+Respuesta Esperada:
+
+```json
+{
+  "specific_volume_liquid": 0.0035,
+  "specific_volume_vapor": 0.0035
+}
+```

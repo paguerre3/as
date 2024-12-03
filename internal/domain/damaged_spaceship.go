@@ -2,7 +2,12 @@ package domain
 
 import (
 	"fmt"
+	"math"
+	"strconv"
+	"strings"
 	"sync"
+
+	"github.com/shopspring/decimal"
 )
 
 var (
@@ -15,47 +20,18 @@ var (
 	}
 
 	systems = []string{"navigation", "communications", "life_support", "engines", "deflector_shield"}
-
-	// Known data points for interpolation
-	dataPoints = []struct {
-		pressure float64
-		vLiquid  float64
-		vVapor   float64
-	}{
-		{1, 0.0010, 0.0200},
-		{2, 0.00105, 0.0180},
-		{3, 0.0011, 0.0150},
-		{4, 0.0012, 0.0120},
-		{5, 0.00125, 0.0090},
-		{6, 0.0013, 0.0070},
-		{7, 0.0014, 0.0050},
-		{8, 0.0016, 0.0040},
-		{9, 0.002, 0.0036},
-		{10, 0.0035, 0.0035}, // Critical point
-		{11, 0.0036, 0.0034},
-		{12, 0.00365, 0.0033},
-		{13, 0.0037, 0.0032},
-		{14, 0.00375, 0.0031},
-		{15, 0.0038, 0.0030},
-		{16, 0.00385, 0.0029},
-		{17, 0.0039, 0.0028},
-		{18, 0.00395, 0.0027},
-		{19, 0.004, 0.0026},
-		{20, 0.00405, 0.0025},
-		{25, 0.00425, 0.0020},
-		{30, 0.0045, 0.0018},
-		{35, 0.00475, 0.0016},
-		{40, 0.005, 0.0015},
-		{45, 0.00525, 0.0014},
-		{50, 0.0055, 0.0013},
-	}
 )
 
 const (
 	PICK_SYSTEM = "<pick one of the systems>"
 
-	P_c = 10.0   // MPa
-	v_c = 0.0035 // m^3/kg
+	Pc = 10.0 // Critical Pressure in MPa
+	//Tc = 500.0     // Critical Temperature in Celsius
+	Vc = 0.0035 // Critical Specific Volume in m^3/kg
+	//Kl = 0.0002462 // Derived constant for liquid line
+	//Kv = -3.014    // Derived constant for vapor line
+	Kl = 0.00024623655913978494 // Corrected constant for liquid line
+	Kv = -3.014623115577889     // Corrected constant for vapor line
 )
 
 type DamagedSpaceship interface {
@@ -93,26 +69,59 @@ func (d *damagedSpaceshipImpl) RepairCode() (string, bool) {
 	return code, ok
 }
 
-// Linear interpolation function
-func (d *damagedSpaceshipImpl) interpolate(pressure, p1, p2, v1, v2 float64) float64 {
-	return v1 + (pressure-p1)*(v2-v1)/(p2-p1)
+func roundUp(num float64) float64 {
+	const scale_min_digits = 100
+	// Check if the number is effectively close to a whole number and needs rounding to two decimals
+	if num == math.Floor(num) {
+		// For whole numbers (like 30.0), round to exactly two decimal places
+		return math.Round(num*scale_min_digits) / scale_min_digits
+	}
+
+	// Scale to 5 decimal places and round
+	scale := 100000.0
+	rounded := math.Round(num*scale) / scale
+	if rounded == 0 {
+		// double check this:
+		return math.Round(rounded*scale_min_digits) / scale_min_digits
+	}
+
+	// Check if the number is very close to a whole number (e.g., 29.999 -> 30.00)
+	str := fmt.Sprintf("%.2f", rounded)
+	if rounded >= 1 && strings.HasSuffix(str, ".00") {
+		num, _ := strconv.ParseFloat(str, 64)
+		// double check this:
+		rounded = math.Round(num*scale_min_digits) / scale_min_digits
+	}
+
+	// Return the rounded value with the needed precision
+	return rounded
 }
 
 // Saturated liquid line equation
 func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) (float64, float64, error) {
-	if pressure < 0.05 || pressure > 50.0 {
-		return 0, 0, fmt.Errorf("pressure out of range")
+	// Validate the pressure range
+	if pressure > Pc {
+		return 0, 0, fmt.Errorf("pressure exceeds critical point (%f MPa)", Pc)
 	}
 
-	var vLiquid, vVapor float64
-	for i := 0; i < len(dataPoints)-1; i++ {
-		p1 := dataPoints[i].pressure
-		p2 := dataPoints[i+1].pressure
-		if pressure >= p1 && pressure <= p2 {
-			vLiquid = d.interpolate(pressure, p1, p2, dataPoints[i].vLiquid, dataPoints[i+1].vLiquid)
-			vVapor = d.interpolate(pressure, p1, p2, dataPoints[i].vVapor, dataPoints[i+1].vVapor)
-			break
-		}
+	pressureBD := decimal.NewFromFloat(pressure)
+	PcBD := decimal.NewFromFloat(Pc)
+	VcBD := decimal.NewFromFloat(Vc)
+	KlBD := decimal.NewFromFloat(Kl)
+	KvBD := decimal.NewFromFloat(Kv)
+
+	// Calculate specific volumes
+	//specificVolumeLiquidBD := Vc - Kl*(Pc-pressure)
+	specificVolumeLiquidBD := VcBD.Sub(KlBD.Mul(PcBD.Sub(pressureBD)))
+	//specificVolumeVaporBD := Vc + Kv*(pressure-Pc)
+	specificVolumeVaporBD := VcBD.Add(KvBD.Mul(pressureBD.Sub(PcBD)))
+
+	if specificVolumeLiquidBD.LessThan(decimal.Zero) || specificVolumeVaporBD.LessThan(decimal.Zero) {
+		return 0, 0, fmt.Errorf("specific volumes cannot be negative")
 	}
-	return vLiquid, vVapor, nil
+
+	svl, _ := specificVolumeLiquidBD.Float64()
+	svv, _ := specificVolumeVaporBD.Float64()
+	//return math.Max(svl, 0), math.Max(svv, 0), nil
+	return roundUp(svl), roundUp(svv), nil
 }

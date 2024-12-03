@@ -4,6 +4,7 @@ go 1.23.1
 
 require (
 	github.com/go-resty/resty/v2 v2.16.2
+	github.com/shopspring/decimal v1.4.0
 	github.com/stretchr/testify v1.10.0
 )
 
