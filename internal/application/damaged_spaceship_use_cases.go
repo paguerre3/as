@@ -8,9 +8,15 @@ type PageData struct {
 	RepairCode string
 }
 
+type Response struct {
+	SpecificVolumeLiquid float64 `json:"specific_volume_liquid"`
+	SpecificVolumeVapor  float64 `json:"specific_volume_vapor"`
+}
+
 type DamagedSpaceshipUseCases interface {
 	NextDamagedSystem() string
 	RepairCode() *PageData
+	PhaseChangeDiagram(pressure float64) (*Response, error)
 }
 
 type damagedSpaceshipUseCasesImpl struct {
@@ -35,4 +41,15 @@ func (d *damagedSpaceshipUseCasesImpl) RepairCode() *PageData {
 	return &PageData{
 		RepairCode: repairCode,
 	}
+}
+
+func (d *damagedSpaceshipUseCasesImpl) PhaseChangeDiagram(pressure float64) (*Response, error) {
+	vLiquid, vVapor, err := d.damagedSpaceship.SaturatedLiquidAndVaporVolumes(pressure)
+	if err != nil {
+		return nil, err
+	}
+	return &Response{
+		SpecificVolumeLiquid: vLiquid,
+		SpecificVolumeVapor:  vVapor,
+	}, nil
 }

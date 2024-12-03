@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/cmd/7_damaged_spaceship/main.go",
+            "program": "${workspaceFolder}/cmd/7_9_damaged_spaceship/main.go",
             "console": "integratedTerminal"  // Use integratedTerminal for user input of fmt.Scan
         },
         {
