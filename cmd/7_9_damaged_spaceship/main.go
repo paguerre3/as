@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"io"
 	"log"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -17,6 +18,7 @@ func logRequest(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		req := c.Request()
 
+		log.Printf("Incoming request %s", strings.Repeat("-", 100))
 		// Log HTTP method (GET, POST, etc.)
 		log.Printf("Method: %s", req.Method)
 
