@@ -2,12 +2,9 @@ package domain
 
 import (
 	"fmt"
-	"math"
-	"strconv"
-	"strings"
 	"sync"
 
-	"github.com/shopspring/decimal"
+	"gonum.org/v1/gonum/stat"
 )
 
 var (
@@ -25,13 +22,11 @@ var (
 const (
 	PICK_SYSTEM = "<pick one of the systems>"
 
-	Pc = 10.0 // Critical Pressure in MPa
-	//Tc = 500.0     // Critical Temperature in Celsius
-	Vc = 0.0035 // Critical Specific Volume in m^3/kg
-	//Kl = 0.0002462 // Derived constant for liquid line
-	//Kv = -3.014    // Derived constant for vapor line
-	Kl = 0.00024623655913978494 // Corrected constant for liquid line
-	Kv = -3.014623115577889     // Corrected constant for vapor line
+	PressureCritical    = 10.0   // MPa
+	TemperatureCritical = 500.0  // °C
+	VolumeCritical      = 0.0035 // m^3/kg
+
+	PressureLine = 0.05 // MPa (pressure where liquid and vapor lines begin)
 )
 
 type DamagedSpaceship interface {
@@ -69,58 +64,25 @@ func (d *damagedSpaceshipImpl) RepairCode() (string, bool) {
 	return code, ok
 }
 
-func roundUp(num float64) float64 {
-	const scale_min_digits = 100.0
-	// Check if the number is effectively close to a whole number and needs rounding to two decimals
-	if num == math.Floor(num) {
-		// For whole numbers (like 30.0), round to exactly two decimal places
-		return math.Round(num*scale_min_digits) / scale_min_digits
-	}
-
-	// Scale to 5 decimal places and round
-	scale := 100000.0
-	rounded := math.Round(num*scale) / scale
-	if rounded == 0 {
-		// double check this:
-		return math.Round(rounded*scale_min_digits) / scale_min_digits
-	}
-
-	// Check if the number is very close to a whole number (e.g., 29.999 -> 30.00)
-	str := fmt.Sprintf("%.2f", rounded)
-	if rounded >= 1 && strings.HasSuffix(str, ".00") {
-		num, _ := strconv.ParseFloat(str, 64)
-		// double check this:
-		rounded = math.Round(num*scale_min_digits) / scale_min_digits
-	}
-
-	// Return the rounded value with the needed precision
-	return rounded
-}
-
 // Saturated liquid line equation
 func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) (float64, float64, error) {
-	// Validate the pressure range
-	//if pressure > Pc {
-	//	return 0, 0, fmt.Errorf("pressure exceeds critical point (%f MPa)", Pc)
-	//}
-	pressureBD := decimal.NewFromFloat(pressure)
-	PcBD := decimal.NewFromFloat(Pc)
-	VcBD := decimal.NewFromFloat(Vc)
-	KlBD := decimal.NewFromFloat(Kl)
-	KvBD := decimal.NewFromFloat(Kv)
+	// Check input range
+	if pressure < PressureLine || pressure > PressureCritical {
+		return 0, 0, fmt.Errorf("pressure %.2f MPa is out of range (%.2f MPa - %.2f MPa)", pressure, PressureLine, PressureCritical)
+	}
 
-	// Calculate specific volumes
-	//specificVolumeLiquidBD := Vc - Kl*(Pc-pressure)
-	specificVolumeLiquidBD := VcBD.Sub(KlBD.Mul(PcBD.Sub(pressureBD)))
-	//specificVolumeVaporBD := Vc + Kv*(pressure-Pc)
-	specificVolumeVaporBD := VcBD.Add(KvBD.Mul(pressureBD.Sub(PcBD)))
+	// Example data points (replace with empirical values or formulas)
+	pressures := []float64{PressureLine, PressureCritical}
+	volumesLiquid := []float64{0.00105, VolumeCritical}
+	volumesVapor := []float64{30.0, VolumeCritical}
 
-	//if specificVolumeLiquidBD.LessThan(decimal.Zero) || specificVolumeVaporBD.LessThan(decimal.Zero) {
-	//	return 0, 0, fmt.Errorf("specific volumes cannot be negative")
-	//}
+	// Linear regression for specific volumes
+	liquidAlpha, liquidBeta := stat.LinearRegression(pressures, volumesLiquid, nil, false)
+	vaporAlpha, vaporBeta := stat.LinearRegression(pressures, volumesVapor, nil, false)
 
-	svl, _ := specificVolumeLiquidBD.Float64()
-	svv, _ := specificVolumeVaporBD.Float64()
-	//return math.Max(svl, 0), math.Max(svv, 0), nil
-	return roundUp(svl), roundUp(svv), nil
+	// Predict specific volumes using the regression equations
+	liquidVolume := liquidAlpha + liquidBeta*pressure
+	vaporVolume := vaporAlpha + vaporBeta*pressure
+
+	return liquidVolume, vaporVolume, nil
 }

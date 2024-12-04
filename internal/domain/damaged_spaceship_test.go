@@ -59,10 +59,3 @@ func TestNextDamagedSystemAndRepairCode(t *testing.T) {
 		})
 	}
 }
-
-func TestRoundUp(t *testing.T) {
-	assert.Equal(t, 0.0035, roundUp(0.0035))
-	assert.Equal(t, 30.00, roundUp(29.999999))
-	assert.Equal(t, 0.00105, roundUp(0.00105358099))
-	assert.Equal(t, 30.00, roundUp(29.998999))
-}
