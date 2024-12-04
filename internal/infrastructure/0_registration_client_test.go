@@ -9,7 +9,7 @@ import (
 
 func TestRegister(t *testing.T) {
 	response, statusCode, err := handler.Register("DarioAguerre", "ARG", "aguerrepablodario@gmail.com", "engineering")
-	//response, statusCode, err := handler.Register("AguerrePablo", "ARG", "pablo.aguerre.2@gmail.com", "engineering")
+	//response, statusCode, err := handler.Register("AguerreDario", "ARG", "p_aguerre_2@hotmail.com", "engineering")
 
 	assert.NoError(t, err)
 	assert.Equal(t, 200, statusCode)
