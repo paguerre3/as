@@ -100,10 +100,9 @@ func roundUp(num float64) float64 {
 // Saturated liquid line equation
 func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) (float64, float64, error) {
 	// Validate the pressure range
-	if pressure > Pc {
-		return 0, 0, fmt.Errorf("pressure exceeds critical point (%f MPa)", Pc)
-	}
-
+	//if pressure > Pc {
+	//	return 0, 0, fmt.Errorf("pressure exceeds critical point (%f MPa)", Pc)
+	//}
 	pressureBD := decimal.NewFromFloat(pressure)
 	PcBD := decimal.NewFromFloat(Pc)
 	VcBD := decimal.NewFromFloat(Vc)
