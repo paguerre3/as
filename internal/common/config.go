@@ -10,9 +10,10 @@ const (
 	APPLICATION_JSON = "application/json"
 	AUTHORIZATION    = "API-KEY"
 	// original mail
-	//BEARER_API_KEY = "80ea79f02e684f9eb5d979d9f09ba087" // hotmail
-	//BEARER_API_KEY = "a79f99a48ee04b529605b797fe43182c" // gmail1
-	BEARER_API_KEY = "255292ff68394c6eb6136069a034bf28" // gmail2 (IMPORTANT)
+	//BEARER_API_KEY = "80ea79f02e684f9eb5d979d9f09ba087" // hotmail (p_aguerre)
+	//BEARER_API_KEY = "a79f99a48ee04b529605b797fe43182c" // gmail1 (pablo.aguerre)
+	//BEARER_API_KEY = "255292ff68394c6eb6136069a034bf28" // gmail2 (IMPORTANT: aguerrepablodario)
+	BEARER_API_KEY = "6ef09ad2a3e847c6932f4d5e8abacad0" // gmail3 (pablo.aguerre.2)
 	SWAPI          = "https://swapi.dev/api/"
 	POKE_API       = "https://pokeapi.co/api/v2"
 	TEMPLATES_DIR  = "internal/infrastructure/templates"

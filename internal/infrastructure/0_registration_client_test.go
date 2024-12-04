@@ -9,6 +9,8 @@ import (
 
 func TestRegister(t *testing.T) {
 	response, statusCode, err := handler.Register("DarioAguerre", "ARG", "aguerrepablodario@gmail.com", "engineering")
+	//response, statusCode, err := handler.Register("AguerrePablo", "ARG", "pablo.aguerre.2@gmail.com", "engineering")
+
 	assert.NoError(t, err)
 	assert.Equal(t, 200, statusCode)
 	log.Infof("response: %+v", response) // message says API key is sent via e-mail
