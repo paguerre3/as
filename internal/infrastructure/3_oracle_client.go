@@ -12,7 +12,7 @@ func (c *clientHandlerImpl) Fetch(uri string) (map[string]interface{}, int, erro
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
 
 func (c *clientHandlerImpl) fetchSWAPI(path string, index int) (map[string]interface{}, int, error) {
@@ -37,7 +37,7 @@ func (c *clientHandlerImpl) QueryOracle(name string) (map[string]interface{}, in
 		return handleError(resp, err)
 	}
 
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
 
 func (c *clientHandlerImpl) OracleSolution(balancedBlanet string) (map[string]interface{}, int, error) {
@@ -56,5 +56,5 @@ func (c *clientHandlerImpl) OracleSolution(balancedBlanet string) (map[string]in
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

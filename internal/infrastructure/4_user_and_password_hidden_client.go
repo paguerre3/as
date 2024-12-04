@@ -18,5 +18,5 @@ func (c *clientHandlerImpl) UserAndPasswordSolution(username, password string) (
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

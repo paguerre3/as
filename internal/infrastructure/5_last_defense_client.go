@@ -30,5 +30,5 @@ func (c *clientHandlerImpl) PerformTurn(action string, x string, y int) (map[str
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

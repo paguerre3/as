@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"encoding/json"
+	"log"
 	"sync"
 
 	"github.com/go-resty/resty/v2"
@@ -30,10 +31,16 @@ type ClientHandler interface {
 	GetTypeData(typeUrl, typeName string) (response map[string]interface{}, statusCode int, err error)
 	GetUpdatePokemonHeight(pokemonUrl, typeName string, typeHeights map[string][]float64, mu *sync.Mutex) (statusCode int, err error)
 	PokemonSolution(pokeSolution map[string]interface{}) (response map[string]interface{}, statusCode int, err error)
+
+	OpenDoor(body interface{}, gryffindorCookies *[]string) (response map[string]interface{}, statusCode int, err error)
+	FirstClues() (response map[string]interface{}, statusCode int, err error)
+	FourthClue(gryffindorCookies *[]string) (response map[string]interface{}, statusCode int, err error)
+	HiddenMessageSolution(hiddenMessagePayload map[string]interface{}) (map[string]interface{}, int, error)
 }
 
 type clientHandlerImpl struct {
 	client *resty.Client
+	debug  bool
 }
 
 func NewClientHandler() ClientHandler {
@@ -42,8 +49,48 @@ func NewClientHandler() ClientHandler {
 	}
 }
 
-func handleResponse(resp *resty.Response) (map[string]interface{}, int, error) {
+func NewClientHandlerDebug() ClientHandler {
+	return &clientHandlerImpl{
+		client: resty.New(),
+		debug:  true,
+	}
+}
+
+func logResponse(resp *resty.Response) {
+	if resp == nil {
+		log.Println("Response is nil")
+		return
+	}
+
+	// Log Status Code
+	log.Printf("Status: %d", resp.StatusCode())
+
+	// Log Headers
+	log.Println("Headers:")
+	for key, values := range resp.Header() {
+		log.Printf("%s: %s", key, values)
+	}
+
+	// Log Raw Body
+	log.Println("Body:")
+	body := resp.String()
+	if len(body) > 0 {
+		log.Println(body)
+	} else {
+		log.Println("No body content")
+	}
+
+	// Log Full Raw Response
+	log.Println("Raw Response Details:")
+	log.Printf("%+v\n", resp.RawResponse)
+}
+
+func (c *clientHandlerImpl) handleResponse(resp *resty.Response) (map[string]interface{}, int, error) {
 	var response map[string]interface{}
+	if c.debug {
+		logResponse(resp)
+	}
+
 	if err := json.Unmarshal(resp.Body(), &response); err != nil {
 		return nil, resp.StatusCode(), err
 	}

@@ -16,7 +16,7 @@ func (c *clientHandlerImpl) GetPockemonTypes() (map[string]interface{}, int, err
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
 
 func (c *clientHandlerImpl) GetTypeData(typeUrl, typeName string) (map[string]interface{}, int, error) {
@@ -26,7 +26,7 @@ func (c *clientHandlerImpl) GetTypeData(typeUrl, typeName string) (map[string]in
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
 
 func (c *clientHandlerImpl) GetUpdatePokemonHeight(pokemonUrl, typeName string, typeHeights map[string][]float64, mu *sync.Mutex) (statusCode int, err error) {
@@ -63,5 +63,5 @@ func (c *clientHandlerImpl) PokemonSolution(pokeSolution map[string]interface{})
 	if err != nil {
 		return handleError(resp, err)
 	}
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

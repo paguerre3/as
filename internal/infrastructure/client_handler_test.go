@@ -8,7 +8,8 @@ import (
 )
 
 var (
-	handler = NewClientHandler()
+	handler      = NewClientHandler()
+	handlerDebug = NewClientHandlerDebug()
 )
 
 func verifyCorrectness(t *testing.T, response map[string]interface{}, statusCode int, err error) {

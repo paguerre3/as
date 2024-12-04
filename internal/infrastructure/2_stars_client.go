@@ -38,5 +38,5 @@ func (c *clientHandlerImpl) ResonanceSolution(averageResonance int) (map[string]
 		return handleError(resp, err)
 	}
 
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

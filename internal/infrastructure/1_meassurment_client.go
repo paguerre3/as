@@ -15,7 +15,7 @@ func (c *clientHandlerImpl) Measurement() (map[string]interface{}, int, error) {
 		return handleError(resp, err)
 	}
 
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
 
 func (c *clientHandlerImpl) MeassurmentSolution(speed int) (map[string]interface{}, int, error) {
@@ -35,5 +35,5 @@ func (c *clientHandlerImpl) MeassurmentSolution(speed int) (map[string]interface
 		return handleError(resp, err)
 	}
 
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }

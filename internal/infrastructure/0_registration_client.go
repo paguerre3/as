@@ -21,5 +21,5 @@ func (c *clientHandlerImpl) Register(alias, country, email, applyRole string) (m
 		return handleError(resp, err)
 	}
 
-	return handleResponse(resp)
+	return c.handleResponse(resp)
 }
