@@ -70,7 +70,7 @@ func (d *damagedSpaceshipImpl) RepairCode() (string, bool) {
 }
 
 func roundUp(num float64) float64 {
-	const scale_min_digits = 100
+	const scale_min_digits = 100.0
 	// Check if the number is effectively close to a whole number and needs rounding to two decimals
 	if num == math.Floor(num) {
 		// For whole numbers (like 30.0), round to exactly two decimal places
