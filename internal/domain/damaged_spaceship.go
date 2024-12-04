@@ -115,9 +115,9 @@ func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) 
 	//specificVolumeVaporBD := Vc + Kv*(pressure-Pc)
 	specificVolumeVaporBD := VcBD.Add(KvBD.Mul(pressureBD.Sub(PcBD)))
 
-	if specificVolumeLiquidBD.LessThan(decimal.Zero) || specificVolumeVaporBD.LessThan(decimal.Zero) {
-		return 0, 0, fmt.Errorf("specific volumes cannot be negative")
-	}
+	//if specificVolumeLiquidBD.LessThan(decimal.Zero) || specificVolumeVaporBD.LessThan(decimal.Zero) {
+	//	return 0, 0, fmt.Errorf("specific volumes cannot be negative")
+	//}
 
 	svl, _ := specificVolumeLiquidBD.Float64()
 	svv, _ := specificVolumeVaporBD.Float64()
