@@ -142,3 +142,5 @@ Respuesta Esperada:
   "specific_volume_vapor": 0.0035
 }
 ```
+
+Al registrar la URL de tu API, asegúrate de que sea accesible desde el exterior, tendrás tan solo 3 intentos y 5 minutos para que el robot repare el sistema hidráulico (aquí demuestras tu atención al detalle).

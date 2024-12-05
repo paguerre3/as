@@ -11,7 +11,7 @@ import (
 func TestDamagedSpaceshptSolution9(t *testing.T) {
 	for i := 0; i < 3; i++ { // less than 5 minutes
 		handlerDebug.RegisterEndpont9Solution(common.EXPOSED_BASE_ENDPOINT)
-		time.Sleep(90 * time.Second)
+		time.Sleep(87 * time.Second)
 	}
 	assert.True(t, true)
 }
