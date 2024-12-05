@@ -36,6 +36,8 @@ type ClientHandler interface {
 	FirstClues() (response map[string]interface{}, statusCode int, err error)
 	FourthClue(gryffindorCookies *[]string) (response map[string]interface{}, statusCode int, err error)
 	HiddenMessageSolution(hiddenMessagePayload map[string]interface{}) (map[string]interface{}, int, error)
+
+	RegisterEndpont9Solution(endpoint string) (map[string]interface{}, int, error)
 }
 
 type clientHandlerImpl struct {
