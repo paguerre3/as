@@ -1,11 +1,11 @@
 package domain
 
 import (
+	"errors"
 	"fmt"
 	"sync"
 
 	"github.com/shopspring/decimal"
-	"gonum.org/v1/gonum/stat"
 )
 
 var (
@@ -71,25 +71,81 @@ func (d *damagedSpaceshipImpl) RepairCode() (string, bool) {
 	return code, ok
 }
 
-// SaturatedLiquidAndVaporVolumes calculates the saturated liquid and vapor volumes for a given pressure using linear regression
 func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) (float64, float64, error) {
-	// Check input range
 	if pressure < PressureLine || pressure > PressureCritical {
 		return 0, 0, fmt.Errorf("pressure %.2f MPa is out of range (%.2f MPa - %.2f MPa)", pressure, PressureLine, PressureCritical)
 	}
 
-	// Example data points (replace with empirical values or formulas)
 	pressures := []float64{ReferencePressureMPa, CriticalPressureMPa}
-	volumesLiquid := []float64{LiquidStartVolume, CriticalVolume}
-	volumesVapor := []float64{VaporStartVolume, CriticalVolume}
+	liquidVolumes := []float64{LiquidStartVolume, CriticalVolume}
+	vaporVolumes := []float64{VaporStartVolume, CriticalVolume}
 
-	// Linear regression for specific volumes
-	liquidAlpha, liquidBeta := stat.LinearRegression(pressures, volumesLiquid, nil, false)
-	vaporAlpha, vaporBeta := stat.LinearRegression(pressures, volumesVapor, nil, false)
+	liquidVolume, err := cubicSplineInterpolation(pressures, liquidVolumes, pressure)
+	if err != nil {
+		return 0, 0, err
+	}
 
-	// Predict specific volumes using the regression equations
-	liquidVolume, _ := decimal.NewFromFloat(liquidAlpha + liquidBeta*pressure).Round(5).Float64()
-	vaporVolume, _ := decimal.NewFromFloat(vaporAlpha + vaporBeta*pressure).Round(5).Float64()
+	vaporVolume, err := cubicSplineInterpolation(pressures, vaporVolumes, pressure)
+	if err != nil {
+		return 0, 0, err
+	}
 
-	return liquidVolume, vaporVolume, nil // Return rounded liquidVolume, vaporVolume, nil
+	lv, _ := decimal.NewFromFloat(liquidVolume).Round(5).Float64()
+	gv, _ := decimal.NewFromFloat(vaporVolume).Round(5).Float64()
+
+	return lv, gv, nil
+}
+
+// cubicSplineInterpolation implements cubic spline interpolation for a given set of data points.
+func cubicSplineInterpolation(x, y []float64, xTarget float64) (float64, error) {
+	n := len(x)
+	if n != len(y) || n < 2 {
+		return 0, errors.New("invalid input: x and y must have the same length and at least two points")
+	}
+
+	// Step 1: Calculate h and alpha
+	h := make([]float64, n-1)
+	alpha := make([]float64, n-1)
+	for i := 0; i < n-1; i++ {
+		h[i] = x[i+1] - x[i]
+		if h[i] <= 0 {
+			return 0, errors.New("x values must be strictly increasing")
+		}
+		alpha[i] = (y[i+1] - y[i]) / h[i]
+	}
+
+	// Step 2: Solve tridiagonal system for c
+	l := make([]float64, n)
+	mu := make([]float64, n)
+	z := make([]float64, n)
+
+	l[0], l[n-1] = 1, 1
+	for i := 1; i < n-1; i++ {
+		l[i] = 2*(x[i+1]-x[i-1]) - h[i-1]*mu[i-1]
+		mu[i] = h[i] / l[i]
+		z[i] = (alpha[i] - h[i-1]*z[i-1]) / l[i]
+	}
+
+	c := make([]float64, n)
+	for j := n - 2; j >= 0; j-- {
+		c[j] = z[j] - mu[j]*c[j+1]
+	}
+
+	// Step 3: Calculate b and d
+	b := make([]float64, n-1)
+	d := make([]float64, n-1)
+	for i := 0; i < n-1; i++ {
+		b[i] = (y[i+1]-y[i])/h[i] - h[i]*(c[i+1]+2*c[i])/3
+		d[i] = (c[i+1] - c[i]) / (3 * h[i])
+	}
+
+	// Step 4: Interpolate
+	for i := 0; i < n-1; i++ {
+		if xTarget >= x[i] && xTarget <= x[i+1] {
+			diff := xTarget - x[i]
+			return y[i] + b[i]*diff + c[i]*diff*diff + d[i]*diff*diff*diff, nil
+		}
+	}
+
+	return 0, errors.New("xTarget out of range")
 }
