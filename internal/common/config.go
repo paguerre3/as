@@ -12,8 +12,8 @@ const (
 	// original mail
 	//BEARER_API_KEY = "80ea79f02e684f9eb5d979d9f09ba087" // hotmail (p_aguerre)
 	//BEARER_API_KEY = "a79f99a48ee04b529605b797fe43182c" // gmail1 (pablo.aguerre)
-	//BEARER_API_KEY = "255292ff68394c6eb6136069a034bf28" // gmail2 (IMPORTANT: aguerrepablodario)
-	BEARER_API_KEY        = "ea975f58ac734a6bae7ef7008ec467af" // hotmail2 (aguerre_pablo_dario)
+	//BEARER_API_KEY = "255292ff68394c6eb6136069a034bf28" // gmail2 (IMP: aguerrepablodario)
+	BEARER_API_KEY        = "36b39441ba7040fea158db6a4103aaa6" // hotmail2 (IMP: aguerrepablodario)
 	SWAPI                 = "https://swapi.dev/api/"
 	POKE_API              = "https://pokeapi.co/api/v2"
 	TEMPLATES_DIR         = "internal/infrastructure/templates"

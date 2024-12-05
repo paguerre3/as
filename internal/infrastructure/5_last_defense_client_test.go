@@ -14,5 +14,5 @@ func TestLastDefenseSolution(t *testing.T) {
 	result, error := domain.LastDefense(handler)
 	assert.NoError(t, error)
 	assert.NotEmpty(t, result)
-	fmt.Printf("result: %s\n", result)
+	fmt.Printf("result: %+v\n", result)
 }

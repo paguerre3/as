@@ -166,13 +166,26 @@ func LastDefense(handler ClientHandler) (string, error) {
 			grid, enemyX, enemyY = parseRadarData(radarData)
 		}
 		displayRadar(grid, enemyX, enemyY)
+		// avoid prediction here
+		if enemyX == "b" || enemyY == 5 {
+			// Atack in last movement
+			attackResult, statusCode, error := handler.PerformTurn("attack", "c", 7)
+			if error != nil {
+				return "", fmt.Errorf("error performing attack: %v", error)
+			}
+			if statusCode != 200 {
+				return "", fmt.Errorf("error performing attack: status code %d", statusCode)
+			}
+			fmt.Printf("Attack result: %+v\n", attackResult)
+			return "success", nil
+		}
 
 		// Predecir movimiento enemigo
 		enemyX, enemyY = predictEnemyMovement(grid, enemyX, enemyY)
 		time.Sleep(radarRefreshTime)
 	}
 
-	// Atck in last movement
+	// Atack in last movement based on prediction
 	attackResult, statusCode, error := handler.PerformTurn("attack", enemyX, enemyY)
 	if error != nil {
 		return "", fmt.Errorf("error performing attack: %v", error)
