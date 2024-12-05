@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/shopspring/decimal"
 	"gonum.org/v1/gonum/stat"
 )
 
@@ -87,10 +88,8 @@ func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) 
 	vaporAlpha, vaporBeta := stat.LinearRegression(pressures, volumesVapor, nil, false)
 
 	// Predict specific volumes using the regression equations
-	//liquidVolume, _ := decimal.NewFromFloat(liquidAlpha + liquidBeta*pressure).Round(5).Float64()
-	//vaporVolume, _ := decimal.NewFromFloat(vaporAlpha + vaporBeta*pressure).Round(5).Float64()
-	liquidVolume := liquidAlpha + liquidBeta*pressure
-	vaporVolume := vaporAlpha + vaporBeta*pressure
+	liquidVolume, _ := decimal.NewFromFloat(liquidAlpha + liquidBeta*pressure).Round(5).Float64()
+	vaporVolume, _ := decimal.NewFromFloat(vaporAlpha + vaporBeta*pressure).Round(5).Float64()
 
 	return liquidVolume, vaporVolume, nil // Return rounded liquidVolume, vaporVolume, nil
 }
