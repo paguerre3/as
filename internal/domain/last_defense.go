@@ -167,7 +167,7 @@ func LastDefense(handler ClientHandler) (string, error) {
 		}
 		displayRadar(grid, enemyX, enemyY)
 		// avoid prediction here
-		if enemyX == "b" || enemyY == 5 {
+		if enemyX == "b" && enemyY == 5 {
 			// Atack in last movement
 			attackResult, statusCode, error := handler.PerformTurn("attack", "c", 7)
 			if error != nil {
