@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/shopspring/decimal"
 	"gonum.org/v1/gonum/stat"
 )
 
@@ -22,11 +23,17 @@ var (
 const (
 	PICK_SYSTEM = "<pick one of the systems>"
 
-	PressureCritical    = 10.0   // MPa
-	TemperatureCritical = 500.0  // °C
-	VolumeCritical      = 0.0035 // m^3/kg
+	// Critical values
+	CriticalPressureMPa  = 10.0   // Critical Pressure in MPa
+	CriticalTemperatureC = 500.0  // Critical Temperature in °C
+	CriticalVolume       = 0.0035 // Critical Volume in m^3/kg
 
-	PressureLine = 0.05 // MPa (pressure where liquid and vapor lines begin)
+	// Reference and starting values
+	ReferencePressureMPa = 0.05    // Reference Pressure in MPa
+	LiquidStartVolume    = 0.00105 // Saturated Liquid Volume at 0.05 MPa
+	VaporStartVolume     = 30.00   // Saturated Vapor Volume at 0.05 MPa
+	PressureLine         = 0.01    // Minimum pressure line (adjustable based on needs)
+	PressureCritical     = 10.0    // Critical pressure
 )
 
 type DamagedSpaceship interface {
@@ -64,7 +71,7 @@ func (d *damagedSpaceshipImpl) RepairCode() (string, bool) {
 	return code, ok
 }
 
-// Saturated liquid line equation
+// SaturatedLiquidAndVaporVolumes calculates the saturated liquid and vapor volumes for a given pressure using linear regression
 func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) (float64, float64, error) {
 	// Check input range
 	if pressure < PressureLine || pressure > PressureCritical {
@@ -72,17 +79,17 @@ func (d *damagedSpaceshipImpl) SaturatedLiquidAndVaporVolumes(pressure float64) 
 	}
 
 	// Example data points (replace with empirical values or formulas)
-	pressures := []float64{PressureLine, PressureCritical}
-	volumesLiquid := []float64{0.00105, VolumeCritical}
-	volumesVapor := []float64{30.0, VolumeCritical}
+	pressures := []float64{ReferencePressureMPa, CriticalPressureMPa}
+	volumesLiquid := []float64{LiquidStartVolume, CriticalVolume}
+	volumesVapor := []float64{VaporStartVolume, CriticalVolume}
 
 	// Linear regression for specific volumes
 	liquidAlpha, liquidBeta := stat.LinearRegression(pressures, volumesLiquid, nil, false)
 	vaporAlpha, vaporBeta := stat.LinearRegression(pressures, volumesVapor, nil, false)
 
 	// Predict specific volumes using the regression equations
-	liquidVolume := liquidAlpha + liquidBeta*pressure
-	vaporVolume := vaporAlpha + vaporBeta*pressure
+	liquidVolume, _ := decimal.NewFromFloat(liquidAlpha + liquidBeta*pressure).Round(5).Float64()
+	vaporVolume, _ := decimal.NewFromFloat(vaporAlpha + vaporBeta*pressure).Round(5).Float64()
 
-	return liquidVolume, vaporVolume, nil
+	return liquidVolume, vaporVolume, nil // Return rounded liquidVolume, vaporVolume, nil
 }

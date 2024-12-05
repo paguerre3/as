@@ -1,130 +1,132 @@
-damaged_spaceship-1  | 2024/12/04 20:57:52 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:57:52 URI: /phase-change-diagram?pressure=0.05
-damaged_spaceship-1  | 2024/12/04 20:57:52 Headers: map[Accept:[text/html, application/xhtml+xml, application/xml; q=0.9, image/avif, image/webp, image/apng, */*; q=0.8, application/signed-exchange; v=b3; q=0.7] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en, es-419; q=0.9, es; q=0.8, it; q=0.7] Dnt:[1] Priority:[u=0, i] Proxy-Connection:[Keep-Alive] Purpose:[prefetch] Sec-Ch-Ua:["Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"] Sec-Ch-Ua-Mobile:[?0] Sec-Ch-Ua-Platform:["Windows"] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Sec-Purpose:[prefetch;prerender] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=0.05] X-Real-Ip:[10.240.3.196] X-Request-Id:[11ba96e5870ab6ebb9c8ee209efc4130] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:57:52 Query Parameters: map[pressure:[0.05]]
-damaged_spaceship-1  | 2024/12/04 20:57:52 Remote Address: 172.18.0.1:33340
-damaged_spaceship-1  | 2024/12/04 20:57:52 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:57:52 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:57:52 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
-damaged_spaceship-1  | 2024/12/04 20:57:52 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:57:52.539991368Z","id":"11ba96e5870ab6ebb9c8ee209efc4130","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=0.05","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","status":200,"error":"","latency":189003,"latency_human":"189.003µs","bytes_in":0,"bytes_out":62}
-damaged_spaceship-1  | {"time":"2024-12-04T20:58:56.345077992Z","id":"40d98d71debc9b5d10ddbcf0bd7e6f46","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","status":404,"error":"code=404, message=Not Found","latency":95067,"latency_human":"95.067µs","bytes_in":0,"bytes_out":24}
-damaged_spaceship-1  | 2024/12/04 20:58:56 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:58:56 URI: /
-damaged_spaceship-1  | 2024/12/04 20:58:56 Headers: map[Accept:[text/html, application/xhtml+xml, application/xml; q=0.9, image/avif, image/webp, image/apng, */*; q=0.8, application/signed-exchange; v=b3; q=0.7] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en, es-419; q=0.9, es; q=0.8, it; q=0.7] Dnt:[1] Priority:[u=0, i] Proxy-Connection:[Keep-Alive] Referer:[https://turbo-space-bassoon-9pjxqxrgrfr56.github.dev/] Sec-Ch-Ua:["Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"] Sec-Ch-Ua-Mobile:[?0] Sec-Ch-Ua-Platform:["Windows"] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[same-site] Sec-Fetch-User:[?1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/] X-Real-Ip:[10.240.3.196] X-Request-Id:[40d98d71debc9b5d10ddbcf0bd7e6f46] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:58:56 Query Parameters: map[]
-damaged_spaceship-1  | 2024/12/04 20:58:56 Remote Address: 172.18.0.1:33340
-damaged_spaceship-1  | 2024/12/04 20:58:56 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:58:56 Referer: https://turbo-space-bassoon-9pjxqxrgrfr56.github.dev/
-damaged_spaceship-1  | 2024/12/04 20:58:56 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
-damaged_spaceship-1  | 2024/12/04 20:58:56 Body: 
-damaged_spaceship-1  | 2024/12/04 20:58:59 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:58:59 URI: /phase-change-diagram?pressure=10
-damaged_spaceship-1  | 2024/12/04 20:58:59 Headers: map[Accept:[text/html, application/xhtml+xml, application/xml; q=0.9, image/avif, image/webp, image/apng, */*; q=0.8, application/signed-exchange; v=b3; q=0.7] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en, es-419; q=0.9, es; q=0.8, it; q=0.7] Dnt:[1] Priority:[u=0, i] Proxy-Connection:[Keep-Alive] Purpose:[prefetch] Sec-Ch-Ua:["Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"] Sec-Ch-Ua-Mobile:[?0] Sec-Ch-Ua-Platform:["Windows"] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Sec-Purpose:[prefetch;prerender] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=10] X-Real-Ip:[10.240.3.196] X-Request-Id:[4b9b6d3e4d84716838a9f0c469b720ee] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:58:59 Query Parameters: map[pressure:[10]]
-damaged_spaceship-1  | 2024/12/04 20:58:59 Remote Address: 172.18.0.1:38630
-damaged_spaceship-1  | 2024/12/04 20:58:59 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:58:59 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:58:59 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
-damaged_spaceship-1  | 2024/12/04 20:58:59 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:58:59.948201554Z","id":"4b9b6d3e4d84716838a9f0c469b720ee","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=10","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","status":200,"error":"","latency":203270,"latency_human":"203.27µs","bytes_in":0,"bytes_out":65}
-damaged_spaceship-1  | 2024/12/04 20:59:43 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:43 URI: /phase-change-diagram?pressure=2.6194560858201608
-damaged_spaceship-1  | 2024/12/04 20:59:43 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=2.6194560858201608] X-Real-Ip:[10.240.4.3] X-Request-Id:[6ed916d43ac46694adf14e1f2f8116f9] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:43 Query Parameters: map[pressure:[2.6194560858201608]]
-damaged_spaceship-1  | 2024/12/04 20:59:43 Remote Address: 172.18.0.1:46382
-damaged_spaceship-1  | 2024/12/04 20:59:43 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:43 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:43 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:43 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:43.384292862Z","id":"6ed916d43ac46694adf14e1f2f8116f9","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=2.6194560858201608","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":159038,"latency_human":"159.038µs","bytes_in":0,"bytes_out":68}
-damaged_spaceship-1  | 2024/12/04 20:59:43 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:43 URI: /phase-change-diagram?pressure=1.8638386357564434
-damaged_spaceship-1  | 2024/12/04 20:59:43 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.166] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=1.8638386357564434] X-Real-Ip:[10.240.1.166] X-Request-Id:[7caf9c325593a7cd818d61873e776570] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:43 Query Parameters: map[pressure:[1.8638386357564434]]
-damaged_spaceship-1  | 2024/12/04 20:59:43 Remote Address: 172.18.0.1:46398
-damaged_spaceship-1  | 2024/12/04 20:59:43 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:43 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:43 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:43 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:43.813661256Z","id":"7caf9c325593a7cd818d61873e776570","remote_ip":"10.240.1.166","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=1.8638386357564434","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":129602,"latency_human":"129.602µs","bytes_in":0,"bytes_out":67}
-damaged_spaceship-1  | 2024/12/04 20:59:44 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:44 URI: /phase-change-diagram?pressure=8.246075944431682
-damaged_spaceship-1  | 2024/12/04 20:59:44 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=8.246075944431682] X-Real-Ip:[10.240.4.161] X-Request-Id:[fd2d24c63f0e216c21d319ccc7dd4535] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Query Parameters: map[pressure:[8.246075944431682]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Remote Address: 172.18.0.1:38630
-damaged_spaceship-1  | 2024/12/04 20:59:44 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:44 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:44 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:44 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:44.071401172Z","id":"fd2d24c63f0e216c21d319ccc7dd4535","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=8.246075944431682","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":204752,"latency_human":"204.752µs","bytes_in":0,"bytes_out":67}
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:44.34157511Z","id":"cb66b816881021dca3bb6d962d4a0a26","remote_ip":"10.240.3.64","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=3.0567599533747254","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":160109,"latency_human":"160.109µs","bytes_in":0,"bytes_out":68}
-damaged_spaceship-1  | 2024/12/04 20:59:44 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:44 URI: /phase-change-diagram?pressure=3.0567599533747254
-damaged_spaceship-1  | 2024/12/04 20:59:44 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.3.64] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=3.0567599533747254] X-Real-Ip:[10.240.0.199] X-Request-Id:[cb66b816881021dca3bb6d962d4a0a26] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Query Parameters: map[pressure:[3.0567599533747254]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Remote Address: 172.18.0.1:46398
-damaged_spaceship-1  | 2024/12/04 20:59:44 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:44 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:44 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:44 Body: 
-damaged_spaceship-1  | 2024/12/04 20:59:44 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:44 URI: /phase-change-diagram?pressure=3.7575759024550317
-damaged_spaceship-1  | 2024/12/04 20:59:44 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.34] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=3.7575759024550317] X-Real-Ip:[10.240.4.3] X-Request-Id:[68da93aff1840edc15359897ff0a2ec7] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Query Parameters: map[pressure:[3.7575759024550317]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Remote Address: 172.18.0.1:33340
-damaged_spaceship-1  | 2024/12/04 20:59:44 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:44 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:44 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:44 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:44.628454794Z","id":"68da93aff1840edc15359897ff0a2ec7","remote_ip":"10.240.1.34","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=3.7575759024550317","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":152455,"latency_human":"152.455µs","bytes_in":0,"bytes_out":68}
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:44.822599673Z","id":"7e7248c65a8e73ba2ec35f7b395b6a1c","remote_ip":"10.240.1.34","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=0.26911554986625397","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":136715,"latency_human":"136.715µs","bytes_in":0,"bytes_out":67}
-damaged_spaceship-1  | 2024/12/04 20:59:44 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:44 URI: /phase-change-diagram?pressure=0.26911554986625397
-damaged_spaceship-1  | 2024/12/04 20:59:44 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.34] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=0.26911554986625397] X-Real-Ip:[10.240.1.166] X-Request-Id:[7e7248c65a8e73ba2ec35f7b395b6a1c] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Query Parameters: map[pressure:[0.26911554986625397]]
-damaged_spaceship-1  | 2024/12/04 20:59:44 Remote Address: 172.18.0.1:33340
-damaged_spaceship-1  | 2024/12/04 20:59:44 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:44 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:44 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:44 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:45.170761334Z","id":"c40f06b0f3c86f8f64025f3f2642efc9","remote_ip":"10.240.1.166","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=7.7040111106602644","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":128399,"latency_human":"128.399µs","bytes_in":0,"bytes_out":67}
-damaged_spaceship-1  | 2024/12/04 20:59:45 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:45 URI: /phase-change-diagram?pressure=7.7040111106602644
-damaged_spaceship-1  | 2024/12/04 20:59:45 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.166] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=7.7040111106602644] X-Real-Ip:[10.240.1.166] X-Request-Id:[c40f06b0f3c86f8f64025f3f2642efc9] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Query Parameters: map[pressure:[7.7040111106602644]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Remote Address: 172.18.0.1:46410
-damaged_spaceship-1  | 2024/12/04 20:59:45 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:45 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:45 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:45 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:45.342586516Z","id":"2154a2b7845d59c87d538d9c219264ef","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=5.973913753151541","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":127449,"latency_human":"127.449µs","bytes_in":0,"bytes_out":68}
-damaged_spaceship-1  | 2024/12/04 20:59:45 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:45 URI: /phase-change-diagram?pressure=5.973913753151541
-damaged_spaceship-1  | 2024/12/04 20:59:45 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=5.973913753151541] X-Real-Ip:[10.240.0.199] X-Request-Id:[2154a2b7845d59c87d538d9c219264ef] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Query Parameters: map[pressure:[5.973913753151541]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Remote Address: 172.18.0.1:46410
-damaged_spaceship-1  | 2024/12/04 20:59:45 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:45 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:45 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:45 Body: 
-damaged_spaceship-1  | 2024/12/04 20:59:45 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:45 URI: /phase-change-diagram?pressure=3.0525873482783705
-damaged_spaceship-1  | 2024/12/04 20:59:45 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.3.64] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=3.0525873482783705] X-Real-Ip:[10.240.0.199] X-Request-Id:[cd7fcff80da419e7b956b5c538c4bc9b] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Query Parameters: map[pressure:[3.0525873482783705]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Remote Address: 172.18.0.1:46382
-damaged_spaceship-1  | 2024/12/04 20:59:45 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:45 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:45 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:45 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:45.536526194Z","id":"cd7fcff80da419e7b956b5c538c4bc9b","remote_ip":"10.240.3.64","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=3.0525873482783705","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":131395,"latency_human":"131.395µs","bytes_in":0,"bytes_out":68}
-damaged_spaceship-1  | 2024/12/04 20:59:45 Method: GET
-damaged_spaceship-1  | 2024/12/04 20:59:45 URI: /phase-change-diagram?pressure=10.0
-damaged_spaceship-1  | 2024/12/04 20:59:45 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.0.10] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=10.0] X-Real-Ip:[10.240.4.161] X-Request-Id:[3595037bb6aa63d120fe94901aced7e5] X-Scheme:[https]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Query Parameters: map[pressure:[10.0]]
-damaged_spaceship-1  | 2024/12/04 20:59:45 Remote Address: 172.18.0.1:46382
-damaged_spaceship-1  | 2024/12/04 20:59:45 Host: localhost:8080
-damaged_spaceship-1  | 2024/12/04 20:59:45 Referer: 
-damaged_spaceship-1  | 2024/12/04 20:59:45 User-Agent: python-httpx/0.27.0
-damaged_spaceship-1  | 2024/12/04 20:59:45 Body: 
-damaged_spaceship-1  | {"time":"2024-12-04T20:59:45.731557584Z","id":"3595037bb6aa63d120fe94901aced7e5","remote_ip":"10.240.0.10","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=10.0","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":134681,"latency_human":"134.681µs","bytes_in":0,"bytes_out":65}
+2024/12/04 22:14:31 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:14:31 Method: GET
+2024/12/04 22:14:31 URI: /
+2024/12/04 22:14:31 Headers: map[Accept:[text/html, application/xhtml+xml, application/xml; q=0.9, image/avif, image/webp, image/apng, */*; q=0.8, application/signed-exchange; v=b3; q=0.7] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en, es-419; q=0.9, es; q=0.8, it; q=0.7] Dnt:[1] Priority:[u=0, i] Proxy-Connection:[Keep-Alive] Referer:[https://turbo-space-bassoon-9pjxqxrgrfr56.github.dev/] Sec-Ch-Ua:["Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"] Sec-Ch-Ua-Mobile:[?0] Sec-Ch-Ua-Platform:["Windows"] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[same-site] Sec-Fetch-User:[?1] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36] X-Forwarded-For:[10.240.3.64] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/] X-Real-Ip:[10.240.4.3] X-Request-Id:[4bec02884a3d022efc3acd19bd7d5334] X-Scheme:[https]]
+2024/12/04 22:14:31 Query Parameters: map[]
+2024/12/04 22:14:31 Remote Address: [::1]:44138
+2024/12/04 22:14:31 Host: localhost:8080
+2024/12/04 22:14:31 Referer: https://turbo-space-bassoon-9pjxqxrgrfr56.github.dev/
+2024/12/04 22:14:31 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+2024/12/04 22:14:31 Body: 
+{"time":"2024-12-04T22:14:31.582784177Z","id":"4bec02884a3d022efc3acd19bd7d5334","remote_ip":"10.240.3.64","host":"localhost:8080","method":"GET","uri":"/","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","status":404,"error":"code=404, message=Not Found","latency":346757,"latency_human":"346.757µs","bytes_in":0,"bytes_out":24}
+2024/12/04 22:14:35 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:14:35 Method: GET
+2024/12/04 22:14:35 URI: /phase-change-diagram?pressure=10
+2024/12/04 22:14:35 Headers: map[Accept:[text/html, application/xhtml+xml, application/xml; q=0.9, image/avif, image/webp, image/apng, */*; q=0.8, application/signed-exchange; v=b3; q=0.7] Accept-Encoding:[gzip, deflate, br, zstd] Accept-Language:[en, es-419; q=0.9, es; q=0.8, it; q=0.7] Dnt:[1] Priority:[u=0, i] Proxy-Connection:[Keep-Alive] Purpose:[prefetch] Sec-Ch-Ua:["Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"] Sec-Ch-Ua-Mobile:[?0] Sec-Ch-Ua-Platform:["Windows"] Sec-Fetch-Dest:[document] Sec-Fetch-Mode:[navigate] Sec-Fetch-Site:[none] Sec-Fetch-User:[?1] Sec-Purpose:[prefetch;prerender] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36] X-Forwarded-For:[10.240.3.64] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=10] X-Real-Ip:[10.240.0.199] X-Request-Id:[b86760b41821097eb803c2e924501d56] X-Scheme:[https]]
+2024/12/04 22:14:35 Query Parameters: map[pressure:[10]]
+2024/12/04 22:14:35 Remote Address: [::1]:44140
+2024/12/04 22:14:35 Host: localhost:8080
+2024/12/04 22:14:35 Referer: 
+2024/12/04 22:14:35 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+2024/12/04 22:14:35 Body: 
+{"time":"2024-12-04T22:14:35.362559312Z","id":"b86760b41821097eb803c2e924501d56","remote_ip":"10.240.3.64","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=10","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","status":200,"error":"","latency":314987,"latency_human":"314.987µs","bytes_in":0,"bytes_out":94}
+2024/12/04 22:15:33 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:33 Method: GET
+2024/12/04 22:15:33 URI: /phase-change-diagram?pressure=6.344745406445075
+2024/12/04 22:15:33 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.166] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=6.344745406445075] X-Real-Ip:[10.240.3.196] X-Request-Id:[edce83bfeb754039a6ad4ee691d91df0] X-Scheme:[https]]
+2024/12/04 22:15:33 Query Parameters: map[pressure:[6.344745406445075]]
+2024/12/04 22:15:33 Remote Address: [::1]:60862
+2024/12/04 22:15:33 Host: localhost:8080
+2024/12/04 22:15:33 Referer: 
+2024/12/04 22:15:33 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:33 Body: 
+{"time":"2024-12-04T22:15:33.88281694Z","id":"edce83bfeb754039a6ad4ee691d91df0","remote_ip":"10.240.1.166","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=6.344745406445075","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":270524,"latency_human":"270.524µs","bytes_in":0,"bytes_out":92}
+2024/12/04 22:15:34 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:34 Method: GET
+2024/12/04 22:15:34 URI: /phase-change-diagram?pressure=8.580324631451894
+2024/12/04 22:15:34 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.34] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=8.580324631451894] X-Real-Ip:[10.240.4.3] X-Request-Id:[076fc2d58558a6d37f5dca8a8fae0e15] X-Scheme:[https]]
+2024/12/04 22:15:34 Query Parameters: map[pressure:[8.580324631451894]]
+2024/12/04 22:15:34 Remote Address: [::1]:60862
+2024/12/04 22:15:34 Host: localhost:8080
+2024/12/04 22:15:34 Referer: 
+2024/12/04 22:15:34 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:34 Body: 
+{"time":"2024-12-04T22:15:34.131897704Z","id":"076fc2d58558a6d37f5dca8a8fae0e15","remote_ip":"10.240.1.34","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=8.580324631451894","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":342309,"latency_human":"342.309µs","bytes_in":0,"bytes_out":91}
+2024/12/04 22:15:34 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:34 Method: GET
+2024/12/04 22:15:34 URI: /phase-change-diagram?pressure=5.336816673486158
+2024/12/04 22:15:34 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.166] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=5.336816673486158] X-Real-Ip:[10.240.3.196] X-Request-Id:[1cabcbda0e1181efa51d033aa4bd1b5a] X-Scheme:[https]]
+2024/12/04 22:15:34 Query Parameters: map[pressure:[5.336816673486158]]
+2024/12/04 22:15:34 Remote Address: [::1]:60870
+2024/12/04 22:15:34 Host: localhost:8080
+2024/12/04 22:15:34 Referer: 
+2024/12/04 22:15:34 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:34 Body: 
+{"time":"2024-12-04T22:15:34.48907978Z","id":"1cabcbda0e1181efa51d033aa4bd1b5a","remote_ip":"10.240.1.166","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=5.336816673486158","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":256098,"latency_human":"256.098µs","bytes_in":0,"bytes_out":92}
+2024/12/04 22:15:34 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:34 Method: GET
+2024/12/04 22:15:34 URI: /phase-change-diagram?pressure=6.133538516224044
+2024/12/04 22:15:34 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.34] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=6.133538516224044] X-Real-Ip:[10.240.1.166] X-Request-Id:[81dd29406c312a7753da1a936764e081] X-Scheme:[https]]
+2024/12/04 22:15:34 Query Parameters: map[pressure:[6.133538516224044]]
+2024/12/04 22:15:34 Remote Address: [::1]:44138
+2024/12/04 22:15:34 Host: localhost:8080
+2024/12/04 22:15:34 Referer: 
+2024/12/04 22:15:34 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:34 Body: 
+{"time":"2024-12-04T22:15:34.807506689Z","id":"81dd29406c312a7753da1a936764e081","remote_ip":"10.240.1.34","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=6.133538516224044","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":389046,"latency_human":"389.046µs","bytes_in":0,"bytes_out":92}
+2024/12/04 22:15:34 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:34 Method: GET
+2024/12/04 22:15:34 URI: /phase-change-diagram?pressure=2.3000275261262333
+2024/12/04 22:15:34 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.0.10] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=2.3000275261262333] X-Real-Ip:[10.240.4.3] X-Request-Id:[0bfe77e59e19775ad27d95da1ca65581] X-Scheme:[https]]
+2024/12/04 22:15:34 Query Parameters: map[pressure:[2.3000275261262333]]
+2024/12/04 22:15:34 Remote Address: [::1]:60870
+2024/12/04 22:15:34 Host: localhost:8080
+2024/12/04 22:15:34 Referer: 
+2024/12/04 22:15:34 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:34 Body: 
+{"time":"2024-12-04T22:15:34.993525272Z","id":"0bfe77e59e19775ad27d95da1ca65581","remote_ip":"10.240.0.10","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=2.3000275261262333","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":291504,"latency_human":"291.504µs","bytes_in":0,"bytes_out":91}
+2024/12/04 22:15:35 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:35 Method: GET
+2024/12/04 22:15:35 URI: /phase-change-diagram?pressure=7.674931039680011
+2024/12/04 22:15:35 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.3.64] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=7.674931039680011] X-Real-Ip:[10.240.4.3] X-Request-Id:[16d5e5a903d9d610357200c86d3746bc] X-Scheme:[https]]
+2024/12/04 22:15:35 Query Parameters: map[pressure:[7.674931039680011]]
+2024/12/04 22:15:35 Remote Address: [::1]:60874
+2024/12/04 22:15:35 Host: localhost:8080
+2024/12/04 22:15:35 Referer: 
+2024/12/04 22:15:35 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:35 Body: 
+{"time":"2024-12-04T22:15:35.353150684Z","id":"16d5e5a903d9d610357200c86d3746bc","remote_ip":"10.240.3.64","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=7.674931039680011","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":253844,"latency_human":"253.844µs","bytes_in":0,"bytes_out":90}
+2024/12/04 22:15:35 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:35 Method: GET
+2024/12/04 22:15:35 URI: /phase-change-diagram?pressure=6.094204013050632
+2024/12/04 22:15:35 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.4.161] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=6.094204013050632] X-Real-Ip:[10.240.3.196] X-Request-Id:[2ef2bfc4325a193fbe3bf871801574da] X-Scheme:[https]]
+2024/12/04 22:15:35 Query Parameters: map[pressure:[6.094204013050632]]
+2024/12/04 22:15:35 Remote Address: [::1]:60874
+2024/12/04 22:15:35 Host: localhost:8080
+2024/12/04 22:15:35 Referer: 
+2024/12/04 22:15:35 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:35 Body: 
+{"time":"2024-12-04T22:15:35.556662353Z","id":"2ef2bfc4325a193fbe3bf871801574da","remote_ip":"10.240.4.161","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=6.094204013050632","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":223607,"latency_human":"223.607µs","bytes_in":0,"bytes_out":91}
+2024/12/04 22:15:35 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:35 Method: GET
+2024/12/04 22:15:35 URI: /phase-change-diagram?pressure=5.7410300041396845
+2024/12/04 22:15:35 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.0.10] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=5.7410300041396845] X-Real-Ip:[10.240.2.99] X-Request-Id:[188fc71b6133cf633e6d1a21b3652fb8] X-Scheme:[https]]
+2024/12/04 22:15:35 Query Parameters: map[pressure:[5.7410300041396845]]
+2024/12/04 22:15:35 Remote Address: [::1]:60880
+2024/12/04 22:15:35 Host: localhost:8080
+2024/12/04 22:15:35 Referer: 
+2024/12/04 22:15:35 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:35 Body: 
+{"time":"2024-12-04T22:15:35.980552552Z","id":"188fc71b6133cf633e6d1a21b3652fb8","remote_ip":"10.240.0.10","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=5.7410300041396845","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":348250,"latency_human":"348.25µs","bytes_in":0,"bytes_out":90}
+2024/12/04 22:15:36 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:36 Method: GET
+2024/12/04 22:15:36 URI: /phase-change-diagram?pressure=9.123611728429752
+2024/12/04 22:15:36 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.3.196] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=9.123611728429752] X-Real-Ip:[10.240.3.196] X-Request-Id:[9fec8633daadc4f59cce499f256c0b4a] X-Scheme:[https]]
+2024/12/04 22:15:36 Query Parameters: map[pressure:[9.123611728429752]]
+2024/12/04 22:15:36 Remote Address: [::1]:44140
+2024/12/04 22:15:36 Host: localhost:8080
+2024/12/04 22:15:36 Referer: 
+2024/12/04 22:15:36 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:36 Body: 
+{"time":"2024-12-04T22:15:36.205353558Z","id":"9fec8633daadc4f59cce499f256c0b4a","remote_ip":"10.240.3.196","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=9.123611728429752","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":335095,"latency_human":"335.095µs","bytes_in":0,"bytes_out":91}
+2024/12/04 22:15:36 Incoming request ----------------------------------------------------------------------------------------------------
+2024/12/04 22:15:36 Method: GET
+2024/12/04 22:15:36 URI: /phase-change-diagram?pressure=10.0
+2024/12/04 22:15:36 Headers: map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Proxy-Connection:[Keep-Alive] User-Agent:[python-httpx/0.27.0] X-Forwarded-For:[10.240.1.166] X-Forwarded-Host:[turbo-space-bassoon-9pjxqxrgrfr56-8080.app.github.dev] X-Forwarded-Port:[443] X-Forwarded-Proto:[https] X-Forwarded-Scheme:[https] X-Original-Proto:[https] X-Original-Uri:[/phase-change-diagram?pressure=10.0] X-Real-Ip:[10.240.2.99] X-Request-Id:[f110c288806fbf763652f58931e2c80c] X-Scheme:[https]]
+2024/12/04 22:15:36 Query Parameters: map[pressure:[10.0]]
+2024/12/04 22:15:36 Remote Address: [::1]:44138
+2024/12/04 22:15:36 Host: localhost:8080
+2024/12/04 22:15:36 Referer: 
+2024/12/04 22:15:36 User-Agent: python-httpx/0.27.0
+2024/12/04 22:15:36 Body: 
+{"time":"2024-12-04T22:15:36.405224702Z","id":"f110c288806fbf763652f58931e2c80c","remote_ip":"10.240.1.166","host":"localhost:8080","method":"GET","uri":"/phase-change-diagram?pressure=10.0","user_agent":"python-httpx/0.27.0","status":200,"error":"","latency":142486,"latency_human":"142.486µs","bytes_in":0,"bytes_out":94}
