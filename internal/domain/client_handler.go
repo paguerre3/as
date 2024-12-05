@@ -26,6 +26,8 @@ type ClientHandler interface {
 	GetUpdatePokemonHeight(pokemonUrl, typeName string, typeHeights map[string][]float64, mu *sync.Mutex) (statusCode int, err error)
 	PokemonSolution(pokeSolution map[string]interface{}) (response map[string]interface{}, statusCode int, err error)
 
+	RegisterEndpont7Solution(endpoint string) (map[string]interface{}, int, error)
+
 	OpenDoor(body interface{}, gryffindorCookies *[]string) (response map[string]interface{}, statusCode int, err error)
 	FirstClues() (response map[string]interface{}, statusCode int, err error)
 	FourthClue(gryffindorCookies *[]string) (response map[string]interface{}, statusCode int, err error)
