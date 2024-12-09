@@ -15,5 +15,5 @@ RUN go mod tidy && \
 # Expose the port
 EXPOSE 8080
 
-# Run the command when the container starts
-CMD go run ./...
+# Run the command when the container starts (then the cgo build constraint is likely disabled; try setting CGO_ENABLED=1 environment variable in your go build step.)
+CMD CGO_ENABLED=1 go run ./...

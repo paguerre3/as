@@ -10,7 +10,10 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/cmd/7_9_damaged_spaceship/main.go",
-            "console": "integratedTerminal"  // Use integratedTerminal for user input of fmt.Scan
+            "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
+            "env": {
+                "CGO_ENABLED": "1"
+            }
         },
         {
             "name": "Complete Test Package Including ALL Domains",
@@ -19,7 +22,10 @@
             "mode": "auto",
             "program": "${workspaceFolder}",
             "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
-            "args": ["-timeout", "3m"]
+            "args": ["-timeout", "3m"],
+            "env": {
+                "CGO_ENABLED": "1"
+            }
         }
     ]
 }
