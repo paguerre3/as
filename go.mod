@@ -24,6 +24,7 @@ require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/labstack/gommon v0.4.2
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/shopspring/decimal v1.4.0
 	golang.org/x/net v0.27.0 // indirect
 	gonum.org/v1/gonum v0.15.1
 	gopkg.in/yaml.v3 v3.0.1 // indirect

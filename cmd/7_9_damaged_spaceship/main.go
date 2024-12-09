@@ -8,10 +8,10 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/paguerre3/as/internal/api"
-	"github.com/paguerre3/as/internal/application"
-	"github.com/paguerre3/as/internal/common"
-	"github.com/paguerre3/as/internal/infrastructure/web"
+	damaged_spaceship_api "github.com/paguerre3/as/internal/modules/7_9_damaged_spaceship/api"
+	damaged_spaceship_app "github.com/paguerre3/as/internal/modules/7_9_damaged_spaceship/application"
+	damaged_spaceship_web "github.com/paguerre3/as/internal/modules/7_9_damaged_spaceship/infrastructure/web"
+	common_infra "github.com/paguerre3/as/internal/modules/common/infrastructure"
 )
 
 func logRequest(next echo.HandlerFunc) echo.HandlerFunc {
@@ -63,7 +63,7 @@ func logRequest(next echo.HandlerFunc) echo.HandlerFunc {
 
 func registerWalletHandlers(e *echo.Echo, serverPort string) {
 
-	e.Renderer = web.NewTemplateRenderer(common.TEMPLATES_DIR)
+	e.Renderer = damaged_spaceship_web.NewTemplateRenderer(common_infra.TEMPLATES_DIR)
 
 	// Enable CORS
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -76,16 +76,16 @@ func registerWalletHandlers(e *echo.Echo, serverPort string) {
 	e.Use(logRequest)
 
 	// handlers
-	uc := application.NewDamagedSpaceshipUseCases()
-	api := api.NewDamagedSpaceshipHandler(uc)
+	uc := damaged_spaceship_app.NewDamagedSpaceshipUseCases()
+	api := damaged_spaceship_api.NewDamagedSpaceshipHandler(uc)
 	e.GET("/status", api.Status)
 	e.POST("/teapot", api.Teapot)
-	web := web.NewDamagedSpaceshipHandler(uc)
+	web := damaged_spaceship_web.NewDamagedSpaceshipHandler(uc)
 	e.GET("/repair-bay", web.RepairBay)
 
 	e.GET("/phase-change-diagram", api.PhaseChangeDiagram)
 }
 
 func main() {
-	web.NewServerNode("Damaged-Spaceship", "0.0.0.0:8080", registerWalletHandlers).InitAndRun()
+	damaged_spaceship_web.NewServerNode("Damaged-Spaceship-Server", "0.0.0.0:8080", registerWalletHandlers).InitAndRun()
 }

@@ -5,6 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: paguerre3/damaged_spaceship:2.0
+    image: paguerre3/damaged_spaceship:3.0
     ports:
       - 8080:8080
