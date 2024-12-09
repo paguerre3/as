@@ -2,7 +2,6 @@ package infrastructure
 
 import (
 	"testing"
-	"time"
 
 	common_infra "github.com/paguerre3/as/internal/modules/common/infrastructure"
 	"github.com/stretchr/testify/assert"
@@ -60,10 +59,10 @@ La segunda llamada a GET /repair-bay generaría una página HTML similar a esta:
 </html>
 */
 func TestDamagedSpaceshptSolution7(t *testing.T) {
-	for i := 0; i < 3; i++ { // less than 3 minutes
-		damagedSpaceshipClient.RegisterEndpont7Solution(common_infra.EXPOSED_BASE_ENDPOINT)
-		time.Sleep(55 * time.Second)
-	}
+	//for i := 0; i < 3; i++ { // less than 3 minutes
+	damagedSpaceshipClient.RegisterEndpont7Solution(common_infra.EXPOSED_BASE_ENDPOINT)
+	//time.Sleep(55 * time.Second)
+	//}
 	assert.True(t, true)
 }
 
@@ -82,9 +81,9 @@ Pista:
 Mientras buscas frenéticamente entre los manuales de la nave, encuentras el cuaderno de bitácora del ingeniero mecánico. La última entrada termina abruptamente con un "¡Wubba Lubba Dub-Dub!" garabateado y una mancha de lo que sospechas es salsa Sichuan...¡Pero entre diagramas a medio terminar y ecuaciones a medio resolver, encuentras la curva de saturación del fluido hidráulico!
 */
 func TestDamagedSpaceshptSolution9(t *testing.T) {
-	for i := 0; i < 3; i++ { // less than 5 minutes
-		damagedSpaceshipClient.RegisterEndpont9Solution(common_infra.EXPOSED_BASE_ENDPOINT)
-		time.Sleep(87 * time.Second)
-	}
+	//for i := 0; i < 3; i++ { // less than 5 minutes
+	damagedSpaceshipClient.RegisterEndpont9Solution(common_infra.EXPOSED_BASE_ENDPOINT)
+	//time.Sleep(87 * time.Second)
+	//}
 	assert.True(t, true)
 }
