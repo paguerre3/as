@@ -21,9 +21,9 @@ git lfs install
 Set up LFS tracking for `.parquet` files (or specifically for `mobility_data.parquet`):
 ```bash
 # splitted mobility_data.parquet file compressed (.zip)
-git lfs track "*mobility_data.z01"
-git lfs track "*mobility_data.z02"
-git lfs track "*mobility_data.zip"
+git lfs track "internal/modules/10_uncovering_living_cost/assets/mobility_data.z01"
+git lfs track "internal/modules/10_uncovering_living_cost/assets/mobility_data.z02"
+git lfs track "internal/modules/10_uncovering_living_cost/assets/mobility_data.zip"
 ```
 This adds a `.gitattributes` file in the repository root, which ensures that `.parquet` files are managed by LFS.
 
@@ -38,7 +38,9 @@ git commit -m "Track .parquet files with LFS"
 ### **3. Add and Push the File**
 Add the large file to your repository and push it to your remote:
 ```bash
-git add internal/modules/assets/mobility_data.parquet
+git add internal/modules/10_uncovering_living_cost/assets/mobility_data.z01
+git add internal/modules/10_uncovering_living_cost/assets/mobility_data.z02
+git add internal/modules/10_uncovering_living_cost/assets/mobility_data.zip
 git commit -m "Add mobility_data.parquet using LFS"
 git push
 ```
