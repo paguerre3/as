@@ -61,7 +61,7 @@ func logRequest(next echo.HandlerFunc) echo.HandlerFunc {
 	}
 }
 
-func registerWalletHandlers(e *echo.Echo, serverPort string) {
+func registerHandlers(e *echo.Echo, serverPort string) {
 
 	e.Renderer = damaged_spaceship_web.NewTemplateRenderer(common_infra.TEMPLATES_DIR)
 
@@ -87,5 +87,5 @@ func registerWalletHandlers(e *echo.Echo, serverPort string) {
 }
 
 func main() {
-	damaged_spaceship_web.NewServerNode("Damaged-Spaceship-Server", "0.0.0.0:8080", registerWalletHandlers).InitAndRun()
+	damaged_spaceship_web.NewServerNode("Damaged-Spaceship-Server", "0.0.0.0:8080", registerHandlers).InitAndRun()
 }
