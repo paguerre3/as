@@ -64,8 +64,7 @@ To verify that LFS is correctly managing your file:
 ```bash
 git lfs ls-files
 ```
-This should list `mobility_data.parquet` as an LFS-managed file.
+This should list `mobility_data` files as an LFS-managed file.
 
 ---
-
-By following these steps, you can efficiently upload and download large files like `mobility_data.parquet` in your Git repositories using LFS.
+---
