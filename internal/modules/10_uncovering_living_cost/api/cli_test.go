@@ -23,7 +23,7 @@ func init() {
 }
 
 // integration test
-func RunCliTest(t *testing.T) {
+func TestRunCli(t *testing.T) {
 	// for now, instead of enabling an entry point, we just run the CLI manually via testing
 	err := RunCommandLine()
 	assert.NoError(t, err)
