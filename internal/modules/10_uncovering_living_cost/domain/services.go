@@ -7,12 +7,12 @@ import (
 )
 
 // Business logic for processing mobility data into H3-based features
-type H3ServiceInterface interface {
+type H3Service interface {
 	GenerateH3Features(mobilityData []MobilityData, resolution int) map[string]int
 }
 type h3ServiceImpl struct{}
 
-func NewH3Service() H3ServiceInterface {
+func NewH3Service() H3Service {
 	return &h3ServiceImpl{}
 }
 
@@ -33,6 +33,7 @@ func (h *h3ServiceImpl) GenerateH3Features(mobilityData []MobilityData, resoluti
 			defer wg.Done()
 			localMap := make(map[string]int)
 			for _, record := range chunk {
+				// 1st strategy uses only latitude and longitude:
 				h3Index := h3.LatLngToCell(h3.LatLng{Lat: record.Lat, Lng: record.Lon}, resolution)
 				localMap[h3Index.String()]++
 			}
@@ -47,6 +48,7 @@ func (h *h3ServiceImpl) GenerateH3Features(mobilityData []MobilityData, resoluti
 
 	wg.Wait()
 
+	// Convert sync.Map to regular map for use
 	result := make(map[string]int)
 	h3Map.Range(func(key, value interface{}) bool {
 		result[key.(string)] = value.(int)

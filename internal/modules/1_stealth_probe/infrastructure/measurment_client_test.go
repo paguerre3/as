@@ -19,6 +19,7 @@ distance: La distancia recorrida por el planeta en su órbita durante el períod
 time: El tiempo transcurrido durante la observación (en horas).
 Objetivo: Calcular la velocidad orbital instantánea del planeta hasta el número entero más cercano.
 */
+// integration test
 func TestStealthProbeSolution(t *testing.T) {
 	measurmentClient := NewMeasurementClient()
 	probeUseCase := application.NewProbeUseCase(measurmentClient)

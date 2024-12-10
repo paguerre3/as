@@ -50,6 +50,7 @@ La nave enemiga busca la intercepción más rápida, evitando obstáculos.
 Tienes 10 minutos para hacer tu disparo, luego de esto no podrás volver a intentar.
 Tienes acceso a la última lectura del radar y una captura de pantalla de la batalla anterior en la bitácora.
 */
+// integration test
 func TestLastDefenseSolution(t *testing.T) {
 	battleActionsClient := NewBattleActionsClient()
 	lastStandCounUseCase := application.NewLastStandCountdownUseCase(battleActionsClient)

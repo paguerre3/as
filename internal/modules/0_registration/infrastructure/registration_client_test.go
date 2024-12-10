@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// integration test
 func TestRegister(t *testing.T) {
 	client := NewRegistrationClient()
 	//response, statusCode, err := client.Register("aAguerre Pablo D.", "ARG", "aguerrepablodario@hotmail.com", "engineering")

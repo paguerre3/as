@@ -6,10 +6,11 @@ import (
 	"io"
 
 	"github.com/labstack/echo/v4"
+	common_infra "github.com/paguerre3/as/internal/modules/common/infrastructure"
 )
 
 var (
-	templatesPathResolver = NewPathResolver()
+	templatesPathResolver = common_infra.NewPathResolver()
 )
 
 type TemplateRenderer interface {

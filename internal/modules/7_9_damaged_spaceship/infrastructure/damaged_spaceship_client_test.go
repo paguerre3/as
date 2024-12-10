@@ -58,6 +58,7 @@ La segunda llamada a GET /repair-bay generaría una página HTML similar a esta:
 </body>
 </html>
 */
+// integration test
 func TestDamagedSpaceshptSolution7(t *testing.T) {
 	//for i := 0; i < 3; i++ { // less than 3 minutes
 	damagedSpaceshipClient.RegisterEndpont7Solution(common_infra.EXPOSED_BASE_ENDPOINT)
@@ -80,6 +81,7 @@ Pista:
 
 Mientras buscas frenéticamente entre los manuales de la nave, encuentras el cuaderno de bitácora del ingeniero mecánico. La última entrada termina abruptamente con un "¡Wubba Lubba Dub-Dub!" garabateado y una mancha de lo que sospechas es salsa Sichuan...¡Pero entre diagramas a medio terminar y ecuaciones a medio resolver, encuentras la curva de saturación del fluido hidráulico!
 */
+// integration test
 func TestDamagedSpaceshptSolution9(t *testing.T) {
 	//for i := 0; i < 3; i++ { // less than 5 minutes
 	damagedSpaceshipClient.RegisterEndpont9Solution(common_infra.EXPOSED_BASE_ENDPOINT)

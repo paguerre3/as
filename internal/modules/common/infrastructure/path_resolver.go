@@ -1,4 +1,4 @@
-package web
+package infrastructure
 
 import (
 	"os"

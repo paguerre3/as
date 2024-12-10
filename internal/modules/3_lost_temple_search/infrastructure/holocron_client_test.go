@@ -31,6 +31,7 @@ IBF = ((Número de Personajes del Lado Luminoso) - (Número de Personajes del La
 El IBF te dará un valor entre -1 y 1, donde -1 significa dominio total del Lado Oscuro, 0 significa equilibrio, y
 1 significa dominio total del Lado Luminoso.
 */
+// integration test
 func TestBalancedPlanetSolution(t *testing.T) {
 	holocronClient := NewHolocronClient()
 	searchLostTempleUseCase := application.NewSearchLostTempleUseCase(holocronClient)

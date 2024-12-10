@@ -24,6 +24,7 @@ Tu Misión:
 Calcular la altura promedio de todos los tipos de Pokémon, siguiendo el orden alfabético,
 y enviar el valor con una precisión de 3 decimales.
 */
+// integration test
 func TestPokemonsHeightAvgSolution(t *testing.T) {
 	pokemonClient := NewPokemonClient()
 	calculatePokemonTypesAverageHeightsUseCase := application.NewCalculatePokemonTypesAverageHeightsUseCase(pokemonClient)

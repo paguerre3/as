@@ -19,6 +19,7 @@ La interfaz te permite acceder a los datos de las estrellas en la nebulosa.
 Para cada estrella, obtienes su " resonancia" y sus coordenadas.
 El Oráculo te desafía a calcular la "resonancia promedio" de las estrellas en la nebulosa.
 */
+// integration test
 func TestFetchStarsAndResonanceSolution(t *testing.T) {
 	resonanceClient := NewResonanceClient()
 	averageResonanceUseCase := application.NewCalculateAverageResonanceUseCase(resonanceClient)

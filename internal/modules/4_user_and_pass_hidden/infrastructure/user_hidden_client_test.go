@@ -7,6 +7,7 @@ import (
 )
 
 // E4: La Búsqueda de la Forja Élfica Olvidada
+// integration test
 func TestUserAndPasswordSolution(t *testing.T) {
 	//<span style="color:white; float: right;">Not all those who wander</span>
 	//<input type="password" value="are lost" readonly="">
