@@ -15,7 +15,7 @@ const (
 	SWAPI                 = "https://swapi.dev/api/"
 	POKE_API              = "https://pokeapi.co/api/v2"
 	TEMPLATES_DIR         = "internal/modules/7_9_damaged_spaceship/infrastructure/templates"
-	EXPOSED_BASE_ENDPOINT = "https://studious-journey-7xp99gjrvjrfxp77-8080.app.github.dev"
+	EXPOSED_BASE_ENDPOINT = "https://didactic-rotary-phone-w4g77wq97p9hv6r-8080.app.github.dev"
 )
 
 func BuildASApiUri(version int, path string) string {
