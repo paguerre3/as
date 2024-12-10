@@ -9,8 +9,9 @@ const (
 	CONTENT_TYPE     = "Content-Type"
 	APPLICATION_JSON = "application/json"
 	AUTHORIZATION    = "API-KEY"
-	//API_KEY      = "36b39441ba7040fea158db6a4103aaa6" // hotmail2 (IMP: aguerrepablodario)
-	API_KEY               = "20adafe2bf3a4a43b20792aceac3dad9" // outlook (IMP: p_d_aguerre)
+	//API_KEY             = "36b39441ba7040fea158db6a4103aaa6" // hotmail2 (IMP: aguerrepablodario)
+	//API_KEY             = "20adafe2bf3a4a43b20792aceac3dad9" // outlook (IMP: p_d_aguerre)
+	API_KEY               = "7ae204f5e2fd450fa0e65e4fe58404bc" // sejax32599@pokeline.com
 	SWAPI                 = "https://swapi.dev/api/"
 	POKE_API              = "https://pokeapi.co/api/v2"
 	TEMPLATES_DIR         = "internal/modules/7_9_damaged_spaceship/infrastructure/templates"

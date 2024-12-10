@@ -1,6 +1,13 @@
 # Use an official Go image as a base
 FROM golang:1.23.1-alpine
 
+# Install build-essential for C/C++ development tools
+RUN apk update && \
+    apk add --no-cache \
+    bash \
+    build-base && \
+    rm -rf /var/cache/apk/*
+
 WORKDIR /app
 
 COPY cmd/ cmd/

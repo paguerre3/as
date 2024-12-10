@@ -11,7 +11,8 @@ import (
 func TestRegister(t *testing.T) {
 	client := NewRegistrationClient()
 	//response, statusCode, err := client.Register("aAguerre Pablo D.", "ARG", "aguerrepablodario@hotmail.com", "engineering")
-	response, statusCode, err := client.Register("PabloDariAguerre", "ARG", "p_d_aguerre@outlook.com", "engineering")
+	//response, statusCode, err := client.Register("PabloDariAguerre", "ARG", "p_d_aguerre@outlook.com", "engineering")
+	response, statusCode, err := client.Register("Pablo_Dario_Aguerre", "ARG", "sejax32599@pokeline.com", "engineering")
 
 	assert.NoError(t, err)
 	assert.Equal(t, 200, statusCode)
