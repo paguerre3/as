@@ -94,7 +94,6 @@ func RunCommandLine() error {
 		runtime.GC()
 		// disable enable the following "break" for testing:
 		fmt.Println("Model trained successfully")
-		break
 	}
 
 	// 5. run model "once" after training finishes
