@@ -21,7 +21,8 @@ func (h *h3ServiceImpl) GenerateH3Features(mobilityData []MobilityData, resoluti
 	h3Map := sync.Map{}
 	var wg sync.WaitGroup
 
-	chunkSize := len(mobilityData) / 4
+	const numGoroutines = 10
+	chunkSize := len(mobilityData) / numGoroutines
 	for i := 0; i < len(mobilityData); i += chunkSize {
 		end := i + chunkSize
 		if end > len(mobilityData) {

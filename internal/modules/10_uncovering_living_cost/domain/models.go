@@ -6,12 +6,12 @@ type TrainData struct {
 	CostOfLiving float64
 }
 
-// Represents a row in `mobility.parquet`
+// MobilityData represents a record in the mobility_data.parquet file type
 type MobilityData struct {
-	DeviceID  string
-	Lat       float64
-	Lon       float64
-	Timestamp int64
+	DeviceID  int32   `parquet:"device_id"`
+	Lat       float64 `parquet:"lat"`
+	Lon       float64 `parquet:"lon"`
+	Timestamp int64   `parquet:"timestamp"`
 }
 
 // Represents test data from `test.csv`

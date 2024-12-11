@@ -5,11 +5,22 @@
     "version": "0.2.0",
     "configurations": [  
         {
-            "name": "Launch DamagedSpaceship Server",
+            "name": "Launch DamagedSpaceship ReST Server",
             "type": "go",
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/cmd/7_9_damaged_spaceship/main.go",
+            "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
+            "env": {
+                "CGO_ENABLED": "1"
+            }
+        },
+        {
+            "name": "Launch UncoveringLivingCost CLI",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/10_uncovering_living_cost/main.go",
             "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
             "env": {
                 "CGO_ENABLED": "1"

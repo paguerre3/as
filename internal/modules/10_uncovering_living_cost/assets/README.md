@@ -69,4 +69,10 @@ git lfs ls-files
 This should list `mobility_data` files as an LFS-managed file.
 
 ---
----
+# Inspect parquet file structure
+
+```bash
+pip install parquet-tools
+
+parquet-tools inspect internal/modules/10_uncovering_living_cost/assets/mobility_data.parquet
+```

@@ -1,16 +1,16 @@
-package api
+package main
 
 import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
 	"sync"
-	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/paguerre3/as/internal/modules/10_uncovering_living_cost/api"
 )
 
+// this is a CLI application not dockerized as the assets are too large!
 /**
 Use Go’s pprof for CPU and memory profiling:
 
@@ -48,11 +48,22 @@ top10 -alloc_space
 //In the interactive pprof session, run:
 web
 */
+// this is a CLI application not dockerized as the assets are too large!
+func main() {
+	enableProfiling()
+
+	err := api.RunCommandLine()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
 // Enable profiling for CPU and memory.
-func enableProfiling(wg *sync.WaitGroup) {
-	go func() {
-		defer wg.Done() // Signal readiness after starting the server
+func enableProfiling() {
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func(swg *sync.WaitGroup) {
+		defer swg.Done() // Signal readiness after starting the server
 		log.Println("Starting pprof ...")
 
 		server := &http.Server{Addr: "localhost:6060"}
@@ -66,23 +77,12 @@ func enableProfiling(wg *sync.WaitGroup) {
 		// Wait until the server is reachable
 		for {
 			resp, err := http.Get("http://localhost:6060/debug/pprof/")
-			if err == nil {
+			if err == nil && resp.StatusCode == http.StatusOK {
 				resp.Body.Close()
 				break // Server is ready
 			}
 			time.Sleep(100 * time.Millisecond) // Retry after a short delay
 		}
-	}()
-}
-
-// integration test
-func TestRunCli(t *testing.T) {
-	var wg sync.WaitGroup
-	wg.Add(1)
-	enableProfiling(&wg)
+	}(&wg)
 	wg.Wait()
-
-	// for now, instead of enabling an entry point, we just run the CLI manually via testing
-	err := RunCommandLine()
-	assert.NoError(t, err)
 }
