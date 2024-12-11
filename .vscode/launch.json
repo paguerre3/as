@@ -23,7 +23,10 @@
             "program": "${workspaceFolder}/cmd/10_uncovering_living_cost/main.go",
             "console": "integratedTerminal",  // Use integratedTerminal for user input of fmt.Scan
             "env": {
-                "CGO_ENABLED": "1"
+                "CGO_ENABLED": "1",
+                "GOGC": "400",
+                "GOMEMLIMIT": "1024MiB",
+                "GODEBUG": "gc.concurrent=true"
             }
         },
         {

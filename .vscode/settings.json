@@ -1,5 +1,8 @@
 {
     "go.toolsEnvVars": {
-        "CGO_ENABLED": "1"
+        "CGO_ENABLED": "1",
+        "GOGC": "400",
+        "GOMEMLIMIT": "1024MiB",
+        "GODEBUG": "gc.concurrent=true"
     }
 }
