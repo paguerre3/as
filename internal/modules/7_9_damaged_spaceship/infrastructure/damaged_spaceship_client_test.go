@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"testing"
+	"time"
 
 	common_infra "github.com/paguerre3/as/internal/modules/common/infrastructure"
 	"github.com/stretchr/testify/assert"
@@ -62,7 +63,7 @@ La segunda llamada a GET /repair-bay generaría una página HTML similar a esta:
 func TestDamagedSpaceshptSolution7(t *testing.T) {
 	//for i := 0; i < 3; i++ { // less than 3 minutes
 	damagedSpaceshipClient.RegisterEndpont7Solution(common_infra.EXPOSED_BASE_ENDPOINT)
-	//time.Sleep(55 * time.Second)
+	time.Sleep(3 * time.Second)
 	//}
 	assert.True(t, true)
 }
@@ -85,7 +86,7 @@ Mientras buscas frenéticamente entre los manuales de la nave, encuentras el cua
 func TestDamagedSpaceshptSolution9(t *testing.T) {
 	//for i := 0; i < 3; i++ { // less than 5 minutes
 	damagedSpaceshipClient.RegisterEndpont9Solution(common_infra.EXPOSED_BASE_ENDPOINT)
-	//time.Sleep(87 * time.Second)
+	time.Sleep(3 * time.Second)
 	//}
 	assert.True(t, true)
 }
