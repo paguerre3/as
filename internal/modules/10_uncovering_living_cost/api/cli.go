@@ -92,8 +92,9 @@ func RunCommandLine() error {
 
 		// Trigger garbage collection after processing the batch
 		runtime.GC()
-		// disable enable the following "break" for testing:
 		fmt.Println("Model trained successfully")
+		// disable enable the following "break" for testing:
+		//break
 	}
 
 	// 5. run model "once" after training finishes
