@@ -1,14 +1,17 @@
 package domain
 
 import (
-	"sync"
-
 	"github.com/uber/h3-go/v4"
+)
+
+const (
+	resolution = 9 // between 0 (biggest cell) and 15 (smallest cell) -number suggested by the library
 )
 
 // Business logic for processing mobility data into H3-based features
 type H3Service interface {
-	GenerateH3Features(mobilityData []MobilityData, resolution int) map[string]int
+	GenerateH3Features(mobilityData []MobilityData) map[string]int
+	CalculateH3Key(lat float64, lon float64) string
 }
 type h3ServiceImpl struct{}
 
@@ -16,44 +19,19 @@ func NewH3Service() H3Service {
 	return &h3ServiceImpl{}
 }
 
-// GenerateH3Features processes mobility data into a map of H3 hexagon counts
-func (h *h3ServiceImpl) GenerateH3Features(mobilityData []MobilityData, resolution int) map[string]int {
-	h3Map := sync.Map{}
-	var wg sync.WaitGroup
+// GenerateH3Features processes mobility data into a map of H3 hexagon counts by "key"
+func (h *h3ServiceImpl) GenerateH3Features(mobilityData []MobilityData) map[string]int {
+	result := make(map[string]int)
 
-	const numGoroutines = 10
-	chunkSize := len(mobilityData) / numGoroutines
-	for i := 0; i < len(mobilityData); i += chunkSize {
-		end := i + chunkSize
-		if end > len(mobilityData) {
-			end = len(mobilityData)
-		}
-
-		wg.Add(1)
-		go func(chunk []MobilityData) {
-			defer wg.Done()
-			localMap := make(map[string]int)
-			for _, record := range chunk {
-				// 1st strategy uses only latitude and longitude:
-				h3Index := h3.LatLngToCell(h3.LatLng{Lat: record.Lat, Lng: record.Lon}, resolution)
-				localMap[h3Index.String()]++
-			}
-			for k, v := range localMap {
-				h3Map.LoadOrStore(k, v)
-				if count, ok := h3Map.Load(k); ok {
-					h3Map.Store(k, count.(int)+v)
-				}
-			}
-		}(mobilityData[i:end])
+	for _, record := range mobilityData {
+		h3Key := h.CalculateH3Key(record.Lat, record.Lon)
+		result[h3Key]++
 	}
 
-	wg.Wait()
-
-	// Convert sync.Map to regular map for use
-	result := make(map[string]int)
-	h3Map.Range(func(key, value interface{}) bool {
-		result[key.(string)] = value.(int)
-		return true
-	})
 	return result
+}
+
+func (h *h3ServiceImpl) CalculateH3Key(lat float64, lon float64) string {
+	h3Index := h3.LatLngToCell(h3.LatLng{Lat: lat, Lng: lon}, resolution)
+	return h3Index.String()
 }

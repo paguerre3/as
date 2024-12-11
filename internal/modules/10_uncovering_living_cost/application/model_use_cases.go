@@ -6,8 +6,9 @@ import (
 )
 
 type ModelUseCases interface {
-	TrainModel(trainData []domain.TrainData, features map[string]int) error
-	Predict(testData []domain.TestData, features map[string]int) ([]domain.Prediction, error)
+	TrainModel(trainData []domain.TrainData, features map[string]int) bool
+	RunModel() error
+	Predict(testData []domain.TestData, features map[string]int) (bool, []domain.Prediction, error)
 }
 
 // Handles machine learning model operations
@@ -24,28 +25,40 @@ func NewModelUseCases() ModelUseCases {
 }
 
 // TrainModel trains the regression model using train data and features
-func (m *modelUseCasesImpl) TrainModel(trainData []domain.TrainData, features map[string]int) error {
+func (m *modelUseCasesImpl) TrainModel(trainData []domain.TrainData, features map[string]int) (trainedAtLeastOnce bool) {
 	for _, data := range trainData {
-		count := float64(features[data.HexID])
-		m.model.Train(regression.DataPoint(data.CostOfLiving, []float64{count}))
+		count, exists := features[data.HexID]
+		if !exists {
+			continue
+		}
+		m.model.Train(regression.DataPoint(data.CostOfLiving, []float64{float64(count)}))
+		trainedAtLeastOnce = true
 	}
-	m.model.Run()
-	return nil
+	return trainedAtLeastOnce
+}
+
+func (m *modelUseCasesImpl) RunModel() error {
+	return m.model.Run()
 }
 
 // Predict makes predictions using the trained model
-func (m *modelUseCasesImpl) Predict(testData []domain.TestData, features map[string]int) ([]domain.Prediction, error) {
+func (m *modelUseCasesImpl) Predict(testData []domain.TestData, features map[string]int) (bool, []domain.Prediction, error) {
+	var predictedatLeastOne bool
 	var predictions []domain.Prediction
 	for _, test := range testData {
-		count := float64(features[test.HexID])
-		prediction, err := m.model.Predict([]float64{count})
-		if err != nil {
-			return nil, err
+		count, exists := features[test.HexID]
+		if !exists {
+			continue
 		}
+		prediction, err := m.model.Predict([]float64{float64(count)})
+		if err != nil {
+			return predictedatLeastOne, nil, err
+		}
+		predictedatLeastOne = true
 		predictions = append(predictions, domain.Prediction{
 			HexID:        test.HexID,
 			CostOfLiving: prediction,
 		})
 	}
-	return predictions, nil
+	return predictedatLeastOne, predictions, nil
 }
