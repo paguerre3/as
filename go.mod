@@ -34,7 +34,6 @@ require (
 	github.com/shopspring/decimal v1.4.0
 	github.com/uber/h3-go/v4 v4.1.2
 	golang.org/x/net v0.27.0 // indirect
-	golang.org/x/sync v0.10.0
 	gonum.org/v1/gonum v0.15.1
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
