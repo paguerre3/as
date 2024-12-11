@@ -11,9 +11,9 @@ import (
 
 func TestIsValidKey(t *testing.T) {
 	h3TrainKeys := set.New[string](100)
-	h3TrainKeys.Insert("8966d3285c3ffff")
+	h3TrainKeys.Insert("8866d3285dfffff")
 	h3TestKeys := set.New[string](100)
-	h3TestKeys.Insert("8966d3285c3ffff")
+	h3TestKeys.Insert("8866d3285dfffff")
 	h3TestKeys.Insert("9966d3285c3ffff")
 	h3Keys := h3TrainKeys.Union(h3TestKeys)
 	uc := app.NewH3UseCase()

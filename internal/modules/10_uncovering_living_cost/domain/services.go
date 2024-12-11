@@ -5,7 +5,8 @@ import (
 )
 
 const (
-	resolution = 9 // between 0 (biggest cell) and 15 (smallest cell) -number suggested by the library
+	// I calculated resolution from test.csv and've found that 8 is the right number (doing  reverse engineering for a few samples).
+	resolution = 8 // between 0 (biggest cell) and 15 (smallest cell) -number suggested by the library
 )
 
 // Business logic for processing mobility data into H3-based features
