@@ -1,6 +1,8 @@
 package infrastructure
 
 import (
+	"log"
+
 	"github.com/fraugster/parquet-go/floor"
 	"github.com/hashicorp/go-set/v3"
 	"github.com/paguerre3/as/internal/modules/10_uncovering_living_cost/domain"
@@ -45,6 +47,7 @@ func (r *parquetRepositoryImpl) LoadNextMobilityDataBatch(batchSizeInRows int) (
 		next := r.reader.Next()
 		if !next {
 			endOfFile = true
+			log.Printf("offset: %d\n", r.offset)
 			return data, endOfFile, nil
 		}
 		var record domain.MobilityData
@@ -61,6 +64,7 @@ func (r *parquetRepositoryImpl) LoadNextMobilityDataBatch(batchSizeInRows int) (
 	/*if err := r.reader.Err(); err != nil {
 		return nil, err
 	}*/
+	log.Printf("offset: %d\n", r.offset)
 	return data, endOfFile, nil
 }
 
