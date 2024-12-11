@@ -14,7 +14,7 @@ const (
 	internalParquetPath    = "internal/modules/10_uncovering_living_cost/assets/mobility_data.parquet"
 	internalTestCsvPath    = "internal/modules/10_uncovering_living_cost/assets/test.csv"
 	internalPredictCsvPath = "internal/modules/10_uncovering_living_cost/assets/out/predict_%d.csv"
-	batchSizeInRows        = 1000000 // num_rows: 340411133 / 5000000 = 68.0822266 predictions (being the latest the most accurate)
+	batchSizeInRows        = 10000000 // num_rows: 340411133 / 5000000 = 68.0822266 predictions (being the latest the most accurate)
 )
 
 var (
