@@ -26,3 +26,4 @@ go.work.sum
 
 # large file used in excercise #10
 *.parquet
+predict*.csv
